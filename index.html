@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<link href="login.css" rel="stylesheet">
+<script>
+	// function displayCode() {
+	// 	if($("#code").disabled == true) {
+	// 		$("#code").prop('disabled', false);
+	// 	} else {
+	// 		$("#code").prop('disabled', true);
+	// 	}
+	// }
+
+	$('#teacher').change(function() {
+		console.log("wow");
+
+}); 
+</script>
+</head>
+
+<body>
+<div class="container">
+	<form class="form-login">
+		<h2>Please Sign In</h2>
+		<div class="form-group">
+			<label for="name">Name</label>
+			<input type="text" class="form-control" id="name"/>
+		</div>
+		<div class="form-group">
+			<label for="code">Teacher Code</label>
+			<input type="password" class="form-control" disabled="true" id="code"/>
+		<div class="form-group">
+			<label for="teacher">I am a Teacher</label>
+			<input type="checkbox" class="form-check-input" id="teacher"/>
+		</div>
+		<button type="submit" class="btn btn-default">Submit</button>
+	</form>
+</div>
+</body>
+</html>
