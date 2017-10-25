@@ -9,18 +9,16 @@
 
 <link href="login.css" rel="stylesheet">
 <script>
-	// function displayCode() {
-	// 	if($("#code").disabled == true) {
-	// 		$("#code").prop('disabled', false);
-	// 	} else {
-	// 		$("#code").prop('disabled', true);
-	// 	}
-	// }
-
-	$('#teacher').change(function() {
-		console.log("wow");
-
-}); 
+	function displayCode() {
+		console.log($("#code").prop('disabled'));
+		if($("#code").prop('disabled') == true) {
+			console.log("It was disabled");
+			$("#code").prop('disabled', false);
+		} else {
+			console.log("was not disabled");
+			$("#code").prop('disabled', true);
+		}
+	}
 </script>
 </head>
 
@@ -38,9 +36,33 @@
 		<div class="form-group">
 			<label for="teacher">I am a Teacher</label>
 			<input type="checkbox" class="form-check-input" id="teacher"/>
+			<script> 
+			$('#teacher').click(function() {
+				displayCode();
+				console.log("Hey");
+			}); 
+			</script>
 		</div>
-		<button type="submit" class="btn btn-default">Submit</button>
 	</form>
+	<button type="button" class="btn btn-default" id="submit">Submit</button>
+	<script>
+	$("#submit").click(function() {
+		var teacherCode = $("#code").val(); 
+		var url = "test.php";
+		var data = {"credentials": teacherCode};
+		$.post(url,data,function(res) {
+			console.log(res);
+			if(res == "True") {
+				console.log("hello");
+				window.location = "localhost/teacherHome.html"
+			} else {
+				//console.log("failed");
+				//$("#faliedAttempt").prop("visibility","visible");
+			}
+		});
+	});
+	</script>
+	<div id="failedAttempt" visibility="hidden">Authentication Failed!</div>
 </div>
 </body>
 </html>
