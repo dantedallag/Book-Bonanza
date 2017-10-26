@@ -1,0 +1,11 @@
+body {
+  padding-top: 100px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.form-inline {
+	max-width: 800px;
+  	padding: 15px;
+  	margin: 0 auto;
+}
