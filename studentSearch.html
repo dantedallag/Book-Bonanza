@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--This is the search page for students-->
+<!--Need to add a script to populate the combo boxes with data-->
+
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<link href="search.css" rel="stylesheet">
+
+<script>
+	function populateCBoxes(){
+		for(i=1;i<7;i++){
+			$('#sel1' + i).append('<option>'+ 'Hello'+ '</option>');
+		}
+	}
+</head>
+
+<body>
+<div class="container">
+	<form class="form-inline">
+		<h2>Enter your Reading Interests</h2>
+		<div class="form-group">
+		
+			<label for "sel1">Author</label>
+			<select class="form-control" id="sel1">
+			</select>
+			<label for "sel2">Lexile Level</label>
+			<select class="form-control" id="sel2">
+				<option>200L</option>
+			</select>
+			<label for "sel3">Length</label>
+			<select class="form-control" id="sel3">
+				<option>100</option>
+			</select>
+			<label for "sel4">Genre</label>
+			<select class="form-control" id="sel4">
+				<option>Fantasy</option>
+			</select>
+			<label for "sel5">1st Protagonist Trait</label>
+			<select class="form-control" id="sel5">
+				<option>Young</option>
+			</select>
+			<label for "sel6">2nd Protagonist Trait</label>
+			<select class="form-control" id="sel6">
+				<option>Male</option>
+			</select>
+		</div>
+		<!--Change href link when the search page is ready -->
+		<a href="index.html" class="btn btn-info" role ="button">Submit Selections</a>
+	</form>
+</div>
+</body>
+
+</html>
