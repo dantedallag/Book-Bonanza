@@ -14,9 +14,10 @@
 <script>
 	function populateCBoxes(){
 		for(i=1;i<7;i++){
-			$('#sel1' + i).append('<option>'+ 'Hello'+ '</option>');
+			$('#sel' + i).append('<option>'+ 'Hello'+ '</option>');
 		}
 	}
+</script>
 </head>
 
 <body>
@@ -38,7 +39,19 @@
 			</select>
 			<label for "sel4">Genre</label>
 			<select class="form-control" id="sel4">
+				<option>Historical Fiction</option>
+				<option>Children's Literature</option>
 				<option>Fantasy</option>
+				<option>Novel</option>
+				<option>Young Adult</option>
+				<option>Realistic Fiction</option>
+				<option>Fiction</option>
+				<option>Adventure</option>
+				<option>Romance</option>
+				<option>Middle Grade</option>
+				<option>Science Fiction</option>
+				<option>Mystery</option>
+				<option>Horror</option>
 			</select>
 			<label for "sel5">1st Protagonist Trait</label>
 			<select class="form-control" id="sel5">
@@ -48,6 +61,8 @@
 			<select class="form-control" id="sel6">
 				<option>Male</option>
 			</select>
+			
+			<script> populateCBoxes(); </script>
 		</div>
 		<!--Change href link when the search page is ready -->
 		<a href="index.html" class="btn btn-info" role ="button">Submit Selections</a>
