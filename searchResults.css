@@ -1,0 +1,16 @@
+body {
+  padding-top: 100px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.table
+{
+  width: 900px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.buttons {
+  text-align: center;
+}
