@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <form>
+        <h2>Please Enter a New Book Entry</h2> <!--Sanitized, but text box-->
+        <div class="form-group">
+            <label for="ReadingLevel">Reading Level</label>
+            <input type="text" class="form-control" id="ReadingLevel"/>
+        </div>
+        <div class="form-group">
+            <label for="Author">Author</label>
+            <input type="text" class="form-control" id="Author"/>
+        </div>
+        <div class="form-group">
+            <label for="Popularity">Popularity</label> <!--Popular = >4 recs, Medium = 2-4 recs, Not = 0-1--> 
+            <div class="col-xs-3 selectContainer">
+                <select class="form-control" id="Popularity">
+                    <option value="">Choose Popularity</option>
+                    <option value="NotPopular">Not Popular</option>
+                    <option value="MediumPopularity">Medium Popularity</option>
+                    <option value="VeryPopular">Very Popular</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Length">Length</label> <!--1-100,100-200,200-300,300-400,400-500,500+-->
+            <div class="col-xs-3 selectContainer">
+                <select class="form-control" id="Length">
+                    <option value="">Choose Length In Pages</option>
+                    <option value="Short">Short</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Long">Long</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group"> <!--Got it -->
+            <label for="Genre">Genre</label>
+            <div class="col-xs-3 selectContainer">
+                <select class="form-control" id="Genre">
+                    <option value="">Choose Genre</option>
+                    <option value="Short">Mystery</option>
+                    <option value="Medium">Comedy</option>
+                    <option value="Long">Classic</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Trait1">Protagonist Trait 1</label>
+            <div class="col-xs-3 selectContainer">
+                <select class="form-control" id="Trait1">
+                    <option value="">Choose First Trait</option>
+                    <option value="Short">Cool</option>
+                    <option value="Medium">Awesome</option>
+                    <option value="Long">Wonderful</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Trait1">Protagonist Trait 2</label>
+            <div class="col-xs-3 selectContainer">
+                <select class="form-control" id="Trait1">
+                    <option value="">Choose First Trait</option>
+                    <option value="Short">Cool</option>
+                    <option value="Medium">Awesome</option>
+                    <option value="Long">Wonderful</option>
+                </select>
+            </div>
+        </div>
+    </form>
+</div> 
+</body>

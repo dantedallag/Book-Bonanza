@@ -33,13 +33,13 @@
 		<div class="form-group">
 			<label for="code">Teacher Code</label>
 			<input type="password" class="form-control" disabled="true" id="code"/>
+		</div>
 		<div class="form-group">
 			<label for="teacher">I am a Teacher</label>
 			<input type="checkbox" class="form-check-input" id="teacher"/>
 			<script> 
 			$('#teacher').click(function() {
 				displayCode();
-				console.log("Hey");
 			}); 
 			</script>
 		</div>
@@ -51,18 +51,18 @@
 		var url = "test.php";
 		var data = {"credentials": teacherCode};
 		$.post(url,data,function(res) {
-			console.log(res);
-			if(res == "True") {
-				console.log("hello");
-				window.location = "localhost/teacherHome.html"
-			} else {
+			//console.log(res);
+			//if(res == "True") {
+			//	console.log("hello");
+			//	window.location = "http://localhost/teacherHome.html"
+			//} else {
 				//console.log("failed");
 				//$("#faliedAttempt").prop("visibility","visible");
-			}
+			//}
 		});
 	});
 	</script>
-	<div id="failedAttempt" visibility="hidden">Authentication Failed!</div>
+	<div id="failedAttempt" visibility="hidden">Authentication Failed!</div> <!-- Need to figure out how visibility works-->
 </div>
 </body>
 </html>
