@@ -33,17 +33,20 @@ document.getElementById("t").innerHTML = id="t"><button type="submit" class="btn
 	}
 	
 	Placeholder query statement
-	$resultSet = mysqli_query($connection, "SELECT * FROM Books");
+	$resultSet = mysqli_query($connection, "SELECT title, author, lexile, page_length, genre, trait1, trait2, recommended FROM books");
 	
 	while($row = mysqli_fetch_array($resultSet)){
 		echo "<tr>";
 		echo "<td>" . $row['title'] . "</td>";
 		echo "<td>" . $row['author'] . "</td>";
 		echo "<td>" . $row['lexile'] . "</td>";
-		echo "<td>" . $row['length'] . "</td>";
+		echo "<td>" . $row['page_length'] . "</td>";
+		echo "<td>" . $row['genre'] . "</td>";
 		echo "<td>" . $row['trait1'] . "</td>";
 		echo "<td>" . $row['trait2'] . "</td>";
-		echo "<td>" . $row[''] . "</td>" BUTTON ROW--MAY NEED TWO;
+		echo "<td>" . $row['recommended'] . "</td>";
+		echo "<td id="t"><button type="submit" class="btn btn-default" onclick="myFunction()" align="center;">Edit</button>
+		<button type="submit" class="btn btn-default" onclick="myFunction()" align="center">Delete</button></td>" BUTTON ROW--MAY NEED TWO;
 		echo "</tr>;
 	}
 	
@@ -55,6 +58,7 @@ document.getElementById("t").innerHTML = id="t"><button type="submit" class="btn
 	<th>Author</th>
     <th>Lexile Level</th>
     <th>Length</th>
+	<th>Genre</th>
     <th>Protagonist Trait 1</th>
     <th>Protagonist Trait 2</th>
     <th>Edit/Delete</th>
@@ -85,7 +89,8 @@ document.getElementById("t").innerHTML = id="t"><button type="submit" class="btn
         <td>100</td>
         <td>Good</td>
         <td>Bad</td>
-        <td id="t"><button type="submit" class="btn btn-default" onclick="myFunction()" align="center;">No</button></td>
+        <td id="t"><button type="submit" class="btn btn-default" onclick="myFunction()" align="center;">Edit</button>
+		<button type="submit" class="btn btn-default" onclick="myFunction()" align="center">Delete</button></td>
       </tr>
       <tr>
         <td>Sample Book1</td>
