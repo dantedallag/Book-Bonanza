@@ -27,13 +27,32 @@ document.getElementById("t").innerHTML = id="t"><button type="submit" class="btn
     <h2>Your Class' Book List</h2>
   </form>
   <?php
-	/*$connection = mysqli_connect($server,$user,$pw,$dbname);
+	$server = 'localhost';
+	$user = 'pj';
+	$pw = 'chaos1996';
+	$dbname = 'books';
+	$connection = mysqli_connect($server,$user,$pw,$dbname);
 	if(mysqli_connect_errno()){
 		echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
 	
-	Placeholder query statement
 	$resultSet = mysqli_query($connection, "SELECT title, author, lexile, page_length, genre, trait1, trait2, recommended FROM books");
+	
+	echo "<table class='table table-striped' align='center'>
+	<thead>
+	<tr>
+	<th>Book Title</th>
+	<th>Author</th>
+    <th>Lexile Level</th>
+    <th>Length</th>
+	<th>Genre</th>
+    <th>Protagonist Trait 1</th>
+    <th>Protagonist Trait 2</th>
+	<th>Recommendations</th>
+    <th>Edit/Delete</th>
+	</tr>
+	</thead>
+	<tbody>";
 	
 	while($row = mysqli_fetch_array($resultSet)){
 		echo "<tr>";
@@ -45,72 +64,13 @@ document.getElementById("t").innerHTML = id="t"><button type="submit" class="btn
 		echo "<td>" . $row['trait1'] . "</td>";
 		echo "<td>" . $row['trait2'] . "</td>";
 		echo "<td>" . $row['recommended'] . "</td>";
-		echo "<td id="t"><button type="submit" class="btn btn-default" onclick="myFunction()" align="center;">Edit</button>
-		<button type="submit" class="btn btn-default" onclick="myFunction()" align="center">Delete</button></td>" BUTTON ROW--MAY NEED TWO;
-		echo "</tr>;
+		echo "<td id='t'><button type='submit' class='btn btn-default' onclick='myFunction()' align='center;'>Edit</button>
+		<button type='submit' class='btn btn-default' onclick='myFunction()' align='center'>Delete</button></td>";
+		echo "</tr>";
 	}
 	
-	mysqli_close($connection);*/
-	echo "<table class='table table-striped' align='center'>
-	<thead>
-	<tr>
-	<th>Book Title</th>
-	<th>Author</th>
-    <th>Lexile Level</th>
-    <th>Length</th>
-	<th>Genre</th>
-    <th>Protagonist Trait 1</th>
-    <th>Protagonist Trait 2</th>
-    <th>Edit/Delete</th>
-	</tr>
-	</thead>
-	<tbody>";
+	mysqli_close($connection);
 	
-	echo "</tbody>
-	</table>";
+	
+	echo "</tbody> </table>";
   ?>
-  <table class="table table-striped" align="center">
-    <thead>
-      <tr>
-        <th>Book Title</th>
-        <th>Author</th>
-        <th>Lexile Level</th>
-        <th>Length</th>
-        <th>Protagonist Trait 1</th>
-        <th>Protagonist Trait 2</th>
-        <th>Edit/Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Sample Book</td>
-        <td>Sample Name</td>
-        <td>Easy</td>
-        <td>100</td>
-        <td>Good</td>
-        <td>Bad</td>
-        <td id="t"><button type="submit" class="btn btn-default" onclick="myFunction()" align="center;">Edit</button>
-		<button type="submit" class="btn btn-default" onclick="myFunction()" align="center">Delete</button></td>
-      </tr>
-      <tr>
-        <td>Sample Book1</td>
-        <td>Sample Name1</td>
-        <td>Medium</td>
-        <td>200</td>
-        <td>Good</td>
-        <td>Bad</td>
-        <td>Yes</td>
-      </tr>
-      <tr>
-        <td>Sample Book2</td>
-        <td>Sample Name2</td>
-        <td>Hard</td>
-        <td>300</td>
-        <td>Good</td>
-        <td>Bad</td>
-        <td>No</td>
-      </tr>
-    </tbody>
-    </table>
-</div>
-</body>
