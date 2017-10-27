@@ -6,12 +6,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-function myFunction()
-{
-document.getElementById("t").innerHTML = id="t"><button type="submit" class="btn btn-default" onclick="myFunction()" align="center;">Yes</button>;
-}
-</script>
  
 <link href="studentHome.css" rel="stylesheet">
 </head>
@@ -46,7 +40,7 @@ document.getElementById("t").innerHTML = id="t"><button type="submit" class="btn
         <td>100</td>
         <td>Good</td>
         <td>Bad</td>
-        <td id="t"><button type="submit" class="btn btn-default" onclick="myFunction()" align="center;">No</button></td>
+        <td id="t"><input type="checkbox"</td>
       </tr>
       <tr>
         <td>Sample Book1</td>
@@ -55,7 +49,7 @@ document.getElementById("t").innerHTML = id="t"><button type="submit" class="btn
         <td>200</td>
         <td>Good</td>
         <td>Bad</td>
-        <td>Yes</td>
+        <td id="t"><input type="checkbox"</td>
       </tr>
       <tr>
         <td>Sample Book2</td>
@@ -64,13 +58,14 @@ document.getElementById("t").innerHTML = id="t"><button type="submit" class="btn
         <td>300</td>
         <td>Good</td>
         <td>Bad</td>
-        <td>No</td>
+        <td id="t"><input type="checkbox"</td>
       </tr>
     </tbody>
     </table>
     <form class="buttons">
-      <button type="submit" class="btn btn-default" align="center;">Find a New Book</button>
-
+      <input type="button" class="btn btn-default" value="Find a New Book" onclick="window.location.href='studentSearch.html'" />
     </form>
 </div>
 </body>
+
+//use php to read mySQL of data, fetch name, display books according to the name //in the field and the matching name in the SQL
