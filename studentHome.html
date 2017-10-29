@@ -8,12 +8,24 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  
 <link href="studentHome.css" rel="stylesheet">
+
+<script type="text/javascript">
+  function loadName() {
+  var studentName = localStorage.getItem("name");
+  document.getElementById("studentHeader").innerHTML = "Welcome " + studentName + "!"
+  console.log(studentName);
+  }
+  window.onload = loadName;
+</script>
+
 </head>
+
+
 
 <body>
 <div class="info">
   <form class="student-welcome">
-    <h2>Welcome 'insert student name here'!</h2>
+    <h2 id = "studentHeader">Welcome 'insert student name here'!</h2>
   </form>
 </div>
 <div class="booklist">
@@ -67,5 +79,9 @@
     </form>
 </div>
 </body>
+
+<!-- <script type="text/javascript">
+  loadName();
+</script> -->
 
 //use php to read mySQL of data, fetch name, display books according to the name //in the field and the matching name in the SQL

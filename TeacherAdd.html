@@ -78,7 +78,7 @@
         <div class="form-group32">
             <div class="col-xs-3 selectContainer">
                 <label for="Trait1">Protagonist Trait 2</label> 
-                <select class="form-control" id="Trait1">
+                <select class="form-control" id="Trait2">
                     <option value="">Choose First Trait</option>
                     <option value="Short">Cool</option>
                     <option value="Medium">Awesome</option>
@@ -90,6 +90,25 @@
 
     <form>
         <button type="button" class="btn btn-default" id="submit">Submit</button>
+        <script>
+        $("#submit").click(function() {
+            var title = $("#Title").val();
+            var author = $("#Author").val();
+            var readingLevel = $("#ReadingLevel").val();
+            var length = $("#Length option:selected").text();
+            var genre = $("#Genre option:selected").text();
+            var trait1 = $("#Trait1 option:selected").text();
+            var trait2 = $("#Trait2 option:selected").text();
+            var data = {"title": title, "author": author, "readingLevel": readingLevel, "length": length, "genre": genre, "trait1": trait1, "trait2": trait2};
+            console.log(data);
+            var url = "teacherAdd.php";
+            $.post(url,data,function(res) {
+				var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/teacherHome.php';
+                console.log(res);
+				window.location.replace(newUrl);
+            });
+        });
+        </script>
     </form>
 </div> 
 </body>

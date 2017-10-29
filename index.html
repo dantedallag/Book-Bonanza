@@ -8,17 +8,17 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <link href="login.css" rel="stylesheet">
-<script>
-	function displayCode() {
-		console.log($("#code").prop('disabled'));
-		if($("#code").prop('disabled') == true) {
-			console.log("It was disabled");
-			$("#code").prop('disabled', false);
-		} else {
-			console.log("was not disabled");
-			$("#code").prop('disabled', true);
-		}
+<script type="text/javascript">
+function displayCode() {
+	console.log($("#code").prop('disabled'));
+	if($("#code").prop('disabled') == true) {
+		console.log("It was disabled");
+		$("#code").prop('disabled', false);
+	} else {
+		console.log("was not disabled");
+		$("#code").prop('disabled', true);
 	}
+}
 </script>
 </head>
 
@@ -47,19 +47,43 @@
 	<button type="button" class="btn btn-default" id="submit">Submit</button>
 	<script>
 	$("#submit").click(function() {
-		var teacherCode = $("#code").val(); 
-		var url = "test.php";
-		var data = {"credentials": teacherCode};
-		$.post(url,data,function(res) {
-			//console.log(res);
-			//if(res == "True") {
-			//	console.log("hello");
-			//	window.location = "http://localhost/teacherHome.html"
-			//} else {
-				//console.log("failed");
-				//$("#faliedAttempt").prop("visibility","visible");
-			//}
-		});
+		if($("#code").prop('disabled') == false) {
+			var teacherCode = $("#code").val(); 
+			var teacherName = $("#name").val();
+			var url = "test.php";
+			var data = {"credentials": teacherCode, "name": teacherName};
+			$.post(url,data,function(res) {
+				var json = $.parseJSON(res);
+				console.log(json.name);
+				var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/teacherHome.php';
+				localStorage.setItem("name", teacherName);
+				localStorage.setItem("isTeacher", true);
+				window.location.replace(newUrl);
+				// var form = $('<form action="' + url + '" method="post">' +
+  				// 	'<input type="text" name="teacherName" value="' + teacherName + '" />' +
+  				// 	'</form>');
+				// console.log(form);
+				// $('body').append(form);
+				// form.submit();
+			});
+		} else {
+			var studentName = $("#name").val();
+			var url = "test.php";
+			var data = {"name": studentName};
+			$.post(url,data,function(res) { 
+				console.log(res);
+				var newUrl = "http://linux.students.engr.scu.edu/~ddallaga/htdocs/studentHome.html";
+				localStorage.setItem("name", studentName);
+				localStorage.setItem("isTeacher", false);
+				window.location.replace(newUrl);
+				// var form = $('<form action="' + newUrl + '" method="post">' +
+  				// 	'<input type="text" name="teacherName" value="' + studentName + '" />' +
+  				// 	'</form>');
+				// console.log(form);
+				// $('body').append(form);
+				// form.submit();
+			});
+		}
 	});
 	</script>
 	<div id="failedAttempt" visibility="hidden">Authentication Failed!</div> <!-- Need to figure out how visibility works-->
