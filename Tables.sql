@@ -12,7 +12,7 @@ CREATE TABLE users(
 
 CREATE TABLE books(
     id INT NOT NULL AUTO_INCREMENT,
-    title VARCHAR(50),
+    title VARCHAR(50) UNIQUE,
     author VARCHAR(50),
     lexile VARCHAR(20),
     page_length VARCHAR(20),

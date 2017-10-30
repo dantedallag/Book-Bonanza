@@ -12,7 +12,7 @@
 
 <body>
 <div class="container">
-    <h2>Please Enter a New Book</h2> <!--Sanitized, but text box-->
+    <h2>Please Enter the New Data for the Book</h2> <!--Sanitized, but text box-->
     <form>
         <div class="form-group1">
             <label for="Title">Title</label>
@@ -35,7 +35,7 @@
                     <option value="">Choose Popularity</option>
                     <option value="NotPopular">Not Popular</option>
                     <option value="MediumPopularity">Medium Popularity</option>
-                    <option value="VeryPopular">Vesry Popular</option>
+                    <option value="VeryPopular">Very Popular</option>
                 </select>
             </div>
         </div>
@@ -101,7 +101,7 @@
             var trait2 = $("#Trait2 option:selected").text();
             var data = {"title": title, "author": author, "readingLevel": readingLevel, "length": length, "genre": genre, "trait1": trait1, "trait2": trait2};
             console.log(data);
-            var url = "teacherAdd.php";
+            var url = "teacherEdit.php";
             $.post(url,data,function(res) {
 				var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/teacherHome.php';
                 console.log(res);
