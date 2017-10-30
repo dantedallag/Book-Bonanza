@@ -1,6 +1,6 @@
 <?php
-	//NOT SURE IF THIS IS RIGHT AT ALL
-	$oldTitle = $_POST['oldTitle'];
+    $oldTitle = $_POST['oldTitle'];
+    $oldAuthor = $_POST['oldAuthor'];
     $title = $_POST['title'];
     $author = $_POST['author'];
     $readingLevel =$_POST['readingLevel'];
@@ -20,8 +20,8 @@
         echo "Error connecting";
     }
     $querry = "UPDATE books 
-	SET title=".$title.",author=".$author.",lexile=".$readingLevel.",page_length=".$length.",genre=".$genre.",trait1=".$trait1.",trait2=".$trait2.
-	"WHERE title=".$oldTitle.";";
+	           SET title='".$title."',author='".$author."',lexile='".$readingLevel."',page_length='".$length."',genre='".$genre."',trait1='".$trait1."',trait2='".$trait2."'
+	           WHERE title='".$oldTitle."' AND author='".$oldAuthor."';";
     $result = mysqli_query($connection, $querry);
     mysqli_close($connection);
     echo $querry;

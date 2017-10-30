@@ -92,6 +92,8 @@
         <button type="button" class="btn btn-default" id="submit">Submit</button>
         <script>
         $("#submit").click(function() {
+            var oldTitle = localStorage.getItem('title');
+            var oldAuthor = localStorage.getItem('author');
             var title = $("#Title").val();
             var author = $("#Author").val();
             var readingLevel = $("#ReadingLevel").val();
@@ -99,13 +101,12 @@
             var genre = $("#Genre option:selected").text();
             var trait1 = $("#Trait1 option:selected").text();
             var trait2 = $("#Trait2 option:selected").text();
-            var data = {"title": title, "author": author, "readingLevel": readingLevel, "length": length, "genre": genre, "trait1": trait1, "trait2": trait2};
+            var data = {"oldTitle": oldTitle, "oldAuthor": oldAuthor,"title": title, "author": author, "readingLevel": readingLevel, "length": length, "genre": genre, "trait1": trait1, "trait2": trait2};
             console.log(data);
             var url = "teacherEdit.php";
             $.post(url,data,function(res) {
 				var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/teacherHome.php';
                 console.log(res);
-				window.location.replace(newUrl);
             });
         });
         </script>

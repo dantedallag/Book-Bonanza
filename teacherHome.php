@@ -76,34 +76,34 @@ if(!$connection) {
 $result = mysqli_query($connection, "SELECT title,author,lexile,page_length,genre,trait1,trait2,recommended FROM books"); 
 //End of sql block
 
+$count = 0;
 if(mysqli_num_rows($result) > 0) {
 	while($row = mysqli_fetch_array($result)) {
 			echo "<tr>";
-			echo "<td id='title'>" . $row['title'] . "</td>";
-			echo "<td>" . $row['author'] . "</td>";
+			echo "<td id='title" . $count . "'>" . $row['title'] . "</td>";
+			echo "<td id='author" . $count . "'>" . $row['author'] . "</td>";
 			echo "<td>" . $row['lexile'] . "</td>";
 			echo "<td>" . $row['page_length'] . "</td>";
 			echo "<td>" . $row['genre'] . "</td>";
 			echo "<td>" . $row['trait1'] . "</td>";
 			echo "<td>" . $row['trait2'] . "</td>";
 			echo "<td>" . $row['recommended'] . "</td>";
-			echo "<td><button type='submit' class='btn btn-default' id='edit' align='center;'>Edit</button>
-			<script>
-			$('#edit').click(function() {
-				//NOT SURE HOW TO PASS THIS
-				var title = $row['title'].val();
-				console.log(title);
-				var url = 'teacherEdit.php';
-				$.post(url,title,function(res) {
-					var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/teacherEdit.html';
-					console.log(res);
+			echo "<td><button type='submit' class='btn btn-default' id='edit" . $count . "' align='center;'>Edit</button>";
+			echo "<script>
+				$('#edit" . $count ."').click(function() {
+					var title = $('#title" . $count . "').text();
+					var author = $('#author" .$count . "').text();
+					localStorage.setItem('title', title);
+					localStorage.setItem('author', author);
+					console.log(title);
+					console.log(author);
+					var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/TeacherEdit.html';
 					window.location.replace(newUrl);
 				});
-			});
-			</script>
-			<button type='submit' class='btn btn-default' id='delete' align='center;'>Delete</button></td>";
+			</script>";
+			echo "<td><button type='submit' class='btn btn-default' id='delete' align='center;'>Delete</button></td>";
 			echo "</tr>";
-			$count++;
+			$count = $count + 1;
 	}
 }
 mysqli_close($connection);
@@ -111,3 +111,18 @@ echo "</tbody> </table>";
 ?>
 </body>	
 </html>
+	
+	<!-- <script>
+			$('#edit').click(function() {
+				//NOT SURE HOW TO PASS THIS
+				var title = $row['title'].val();
+				console.log(title);
+				var url = 'teacherEdit.php';
+				$.post(url,title,function(res) {
+					var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/teacherHome.html';
+					console.log(res);
+					window.location.replace(newUrl);
+				});
+			});
+				//What are you counti
+			</script> -->
