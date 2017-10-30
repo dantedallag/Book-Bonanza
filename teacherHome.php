@@ -15,11 +15,11 @@
 
 function loadPage() {
 	if(!localStorage.getItem("isTeacher")) {
-		var url = "http://linux.students.engr.scu.edu/~ddallaga/htdocs"
-		window.location.replace(url);
+		var url = "http://linux.students.engr.scu.edu/~ddallaga/htdocs";
+		window.location.href = url;
 	} else {
 		var teacherName = localStorage.getItem("name");
-		document.getElementById("teacherHeader").innerHTML = "Welcome Teacher" + teacherName + "!"
+		document.getElementById("teacherHeader").innerHTML = "Welcome Teacher " + teacherName + "!"
 		console.log(teacherName);
 	}
 }
@@ -98,7 +98,7 @@ if(mysqli_num_rows($result) > 0) {
 					console.log(title);
 					console.log(author);
 					var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/TeacherEdit.html';
-					window.location.replace(newUrl);
+					window.location.href = newUrl;
 				});
 			</script>";
 			echo "<td><button type='submit' class='btn btn-default' id='delete' align='center;'>Delete</button></td>";
