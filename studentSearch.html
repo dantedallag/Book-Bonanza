@@ -82,7 +82,24 @@
 			<script> populateCBoxes(); </script>
 		</div>
 		<!--Change href link when the search page is ready -->
-		<a href="index.html" class="btn btn-info" role ="button">Submit Selections</a>
+        <button type="button" class="btn btn-default" id="submit">Submit Selections</button>
+		<script>
+		$("#submit").click( function() {
+			var data = new Object();
+			sel.author = $("#sel1 option: selected").text();
+			sel.lexile = $("#sel2").value();
+			sel.length = $("#sel3 option: selected").text();
+			sel.genre = $("#sel4 option: selected").text();
+			sel.trait1 = $("#sel5 option: selected").text();
+			sel.trait2 = $("#sel6 option: selected").text();
+			var url = "searchResultsServer.php";
+			$.post(url, data, function(res)) {
+				var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/searchResultsClient.php';
+				console.log(res);
+				window.location.href = newUrl;
+			});
+		});
+		</script>
 	</form>
 </div>
 </body>

@@ -10,11 +10,10 @@ if(!$connection) {
 	echo "Error connecting";
 }
 //Query for lexile, author(optional), and recommendations?
-$result = mysqli_query($connection,"SELECT title, author, lexile, page_length, genre, trait1, trait2, recommended ".
-								   "FROM books ".
-								   "WHERE ");
+$result = mysqli_query($connection,"SELECT title, author, lexile, page_length, genre, trait1, trait2, recommended FROM books");
+$avgRating = mysqli_query($connection,"SELECT AVG(recommended) FROM books");
 //Pass result set onto searchResults and parse the remainder?
-
 mysqli_close($connection);
+
 
 ?>
