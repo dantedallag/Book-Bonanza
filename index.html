@@ -58,7 +58,7 @@ function displayCode() {
 				var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/teacherHomeClient.php';
 				localStorage.setItem("name", teacherName);
 				localStorage.setItem("isTeacher", true);
-				window.location.replace(newUrl);
+				window.location.href = newUrl;
 			});
 		} else {
 			var studentName = $("#name").val();
@@ -66,10 +66,10 @@ function displayCode() {
 			var data = {"name": studentName};
 			$.post(url,data,function(res) { 
 				console.log(res);
-				var newUrl = "http://linux.students.engr.scu.edu/~ddallaga/htdocs/studentHome.html";
+				var newUrl = "http://linux.students.engr.scu.edu/~ddallaga/htdocs/studentHomeClient.php";
 				localStorage.setItem("name", studentName);
 				localStorage.setItem("isTeacher", false);
-				window.location.replace(newUrl);
+				window.location.href = newUrl;
 			});
 		}
 	});

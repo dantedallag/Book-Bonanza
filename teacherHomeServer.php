@@ -1,5 +1,37 @@
 <?php
-echo "<table class='table table-striped' align='center'>
+$host = "dbserver.engr.scu.edu";
+$user = "ddallaga";
+$password = "00001033223";
+$database = "sdb_ddallaga";
+$port = 3306;
+$connection = mysqli_connect($host, $user, $password, $database)
+	or die("Error: " . mysqli_error($connection));
+if(!$connection) {
+	echo "Error connecting";
+}
+
+$result = mysqli_query($connection, "SELECT person_name FROM users WHERE is_teacher = false");
+
+echo "<script>";
+echo "
+function getStudentBooks() {
+	var name = $('#studentBox :selected').text();
+	$('#tableBody').empty();
+	loadXMLDoc(name);
+	console.log(name);
+}";
+echo "</script>";
+
+echo "<select id='studentBox' onChange='getStudentBooks()'>";
+echo "<option value='All Books'>All Books</option>";
+if(mysqli_num_rows($result) > 0) {
+	while($row = mysqli_fetch_array($result)) {
+		echo "<option value='" . $row['person_name'] . "'>" . $row['person_name'] . "</option>";
+	}
+}
+echo "</select>";
+
+echo "<table class='table table-striped' align='center' id='bookTable'>
 <thead>
 <tr>
 <th>Book Title</th>
@@ -13,18 +45,8 @@ echo "<table class='table table-striped' align='center'>
 <th>Edit/Delete</th>
 </tr>
 </thead>
-<tbody>";
+<tbody id = 'tableBody'>";
 
-$host = "dbserver.engr.scu.edu";
-$user = "ddallaga";
-$password = "00001033223";
-$database = "sdb_ddallaga";
-$port = 3306;
-$connection = mysqli_connect($host, $user, $password, $database)
-	or die("Error: " . mysqli_error($connection));
-if(!$connection) {
-	echo "Error connecting";
-}
 $result = mysqli_query($connection, "SELECT title,author,lexile,page_length,genre,trait1,trait2,recommended FROM books"); 
 //End of sql block
 
@@ -50,7 +72,7 @@ if(mysqli_num_rows($result) > 0) {
 					console.log(title);
 					console.log(author);
 					var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/TeacherEdit.html';
-					window.location.replace(newUrl);
+					window.location.href = newUrl;
 				});
 			</script>";
 			echo "<td><button type='submit' class='btn btn-default' id='delete' align='center;'>Delete</button></td>";
