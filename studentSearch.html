@@ -86,12 +86,12 @@
 		<script>
 		$("#submit").click( function() {
 			var data = new Object();
-			sel.author = $("#sel1 option: selected").text();
-			sel.lexile = $("#sel2").value();
-			sel.length = $("#sel3 option: selected").text();
-			sel.genre = $("#sel4 option: selected").text();
-			sel.trait1 = $("#sel5 option: selected").text();
-			sel.trait2 = $("#sel6 option: selected").text();
+			data.author = $("#sel1 option: selected").text();
+			data.lexile = $("#sel2").value();
+			data.length = $("#sel3 option: selected").text();
+			data.genre = $("#sel4 option: selected").text();
+			data.trait1 = $("#sel5 option: selected").text();
+			data.trait2 = $("#sel6 option: selected").text();
 			var url = "searchResultsServer.php";
 			$.post(url, data, function(res)) {
 				var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/searchResultsClient.php';
