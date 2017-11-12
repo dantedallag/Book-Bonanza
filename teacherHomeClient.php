@@ -10,7 +10,7 @@
 <!--<script src="TeacherHome.js"></script> -->
 
 <script>
-function loadXMLDoc(studentName) {
+function loadXMLDocStudent(studentName) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -19,11 +19,26 @@ function loadXMLDoc(studentName) {
 	};
 	var data = new FormData();
 	data.append('studentName', studentName);
-  //var data = JSON.stringify({ "studentName" : studentName});
   var url = "teacherHomeServerTableUpdate.php";
   xhttp.open("POST", url, true);
   xhttp.send(data);
 }
+
+function loadXMLDocDelete(title,author) {
+	var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("tableBody").innerHTML = this.responseText;
+    }
+	};
+	var data = new FormData();
+	data.append('title', title);
+	data.append('author', author)
+  var url = "teacherHomeServerTableUpdate.php";
+  xhttp.open("POST", url, true);
+  xhttp.send(data);
+}
+
 </script>
 
 <script>
@@ -33,7 +48,7 @@ function loadPage() {
 		window.location.href = url;
 	} else {
 		var teacherName = localStorage.getItem("name");
-		document.getElementById("teacherHeader").innerHTML = "Welcome Teacher" + teacherName + "!";
+		document.getElementById("teacherHeader").innerHTML = "Welcome Teacher " + teacherName + "!";
 		console.log(teacherName);
 	}
 }

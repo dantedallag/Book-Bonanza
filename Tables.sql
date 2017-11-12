@@ -12,7 +12,7 @@ CREATE TABLE users(
 
 CREATE TABLE books(
     id INT NOT NULL AUTO_INCREMENT,
-    title VARCHAR(50) UNIQUE,
+    title VARCHAR(50),
     author VARCHAR(50),
     lexile VARCHAR(20),
     page_length VARCHAR(20),
@@ -20,7 +20,7 @@ CREATE TABLE books(
     trait1 VARCHAR(30),
     trait2 VARCHAR(30),
     recommended INT,
-    PRIMARY KEY(id)
+    PRIMARY KEY(title,author)
 );
 
 CREATE TABLE chosen(
@@ -28,7 +28,7 @@ CREATE TABLE chosen(
     book_id INT,
     recommended BOOLEAN,
     FOREIGN KEY(user_id) REFERENCES users(id),
-    FOREIGN KEY(book_id) REFERENCES books(id),
+    FOREIGN KEY(book_id) REFERENCES books(id) ON DELETE CASCADE,
     PRIMARY KEY(user_id,book_id) 
 );
 

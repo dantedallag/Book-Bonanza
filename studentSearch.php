@@ -14,6 +14,4 @@ $result = mysqli_query($connection,"SELECT title, author, lexile, page_length, g
 $avgRating = mysqli_query($connection,"SELECT AVG(recommended) FROM books");
 //Pass result set onto searchResults and parse the remainder?
 mysqli_close($connection);
-
-
 ?>
