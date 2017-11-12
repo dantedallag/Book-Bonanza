@@ -25,62 +25,81 @@
 
 <body>
 <div class="container">
-	<form class="form-inline">
-		<h2>Enter your Reading Interests</h2>
-		<div class="form-group">
-		
+	<h2>Enter your Reading Interests</h2>
+	<form>
+		<div class="form-group1" style=bl>
 			<label for "sel1">Author</label>
-			<select class="form-control" id="sel1">
+			<select class="form-control" style="width: 200px" id="sel1">
+					<option value="">Choose Author</option>
+					<option value="Historical Fiction">Test1</option>
+					<option value="Children's Literature">Test2</option>
 			</select>
-			<label for "sel2">Lexile Level</label>
-			<select class="form-control" id="sel2">
-				<option>200L</option>
-			</select>
-			<label for "sel3">Length</label>
-			<select class="form-control" id="sel3">
-				    <option value="">Choose Length In Pages</option>
-                    <option value="1-100">1-100</option>
-                    <option value="101-200">101-200</option>
-                    <option value="201-300">201-300</option>
-                    <option value="301-400">301-400</option>
-                    <option value="401-500">401-500</option>
-                    <option value="501-600">501-600</option>
-                    <option value="601-700">601-700</option>
-                    <option value="701-800">701-800</option>
-                    <option value="801-900">801-900</option>
-                    <option value="901-1000">901-1000</option>
-			</select>
-			<label for "sel4">Genre</label>
-			<select class="form-control" id="sel4">
-				<option value="">Choose Genre</option>
-				<option value="Historical Fiction">Historical Fiction</option>
-				<option value="Children's Literature">Children's Literature</option>
-				<option value="Fantasy">Fantasy</option>
-				<option value="Novel">Novel</option>
-				<option value="Young Adult">Young Adult</option>
-				<option value="Realistic Fiction">Realistic Fiction</option>
-				<option value="Fiction">Fiction</option>
-				<option value="Adventure">Adventure</option>
-				<option value="Romance">Romance</option>
-				<option value="Middle Grade">Middle Grade</option>
-				<option value="Science Fiction">Science Fiction</option>
-				<option value="Mystery">Mystery</option>
-				<option value="Horror">Horror</option>
-			</select>
-			<label for "sel5">1st Protagonist Trait</label>
-			<select class="form-control" id="sel5">
-				<option>Young</option>
-			</select>
-			<label for "sel6">2nd Protagonist Trait</label>
-			<select class="form-control" id="sel6">
-				    <option value="">Choose Second Trait</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Couple">Couple</option>
-			</select>
-			
-			<script> populateCBoxes(); </script>
 		</div>
+		<div class="form-group1" style=bl>
+			<label for "sel2">Lexile Level</label>
+			<input type="text" style="width: 200px" class="form-control" id="sel2"/>
+		</div>
+		<div class="form-group1" style=bl>
+			<label for "sel3">Length</label>
+			<input type="text" style="width: 200px" class="form-control" id="sel3"/>
+		</div>
+	</form>
+	<form style="padding-left: 50px; width=3000px;">
+		<div class="form-group21">
+			<div class="col-xs-3 selectContainer">
+				<label for "sel4">Genre</label>
+				<select class="form-control" id="sel4">
+					<option value="">Choose Genre</option>
+					<option value="Historical Fiction">Historical Fiction</option>
+					<option value="Children's Literature">Children's Literature</option>
+					<option value="Fantasy">Fantasy</option>
+					<option value="Novel">Novel</option>
+					<option value="Young Adult">Young Adult</option>
+					<option value="Realistic Fiction">Realistic Fiction</option>
+					<option value="Fiction">Fiction</option>
+					<option value="Adventure">Adventure</option>
+					<option value="Romance">Romance</option>
+					<option value="Middle Grade">Middle Grade</option>
+					<option value="Science Fiction">Science Fiction</option>
+					<option value="Mystery">Mystery</option>
+					<option value="Horror">Horror</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group22">
+           	<div class="col-xs-3 selectContainer">
+				<label for "sel5">1st Protagonist Trait</label>
+				<select class="form-control" id="sel5">
+					<option value="">Choose First Trait</option>
+                    <option value="Short">African American</option>
+                    <option value="Short">Native American</option>
+                    <option value="Medium">Mexican American</option>
+                    <option value="Long">Scandinavian American</option>
+                    <option value="Medium">Hispanic</option>
+                    <option value="Medium">Chilean</option>
+                    <option value="Long">Pakistani</option>
+                    <option value="Short">Hatian</option>
+                    <option value="Long">Polish</option>
+                    <option value="Short">Persian</option>
+                    <option value="Medium">Afghanistani</option>
+                    <option value="Long">Interacial</option>
+                    <option value="Short">Biracial</option>
+                    <option value="Long">Young</option>
+                    <option value="Medium">Dog</option>
+				</select>			
+			</div>
+           	<div class="col-xs-3 selectContainer">
+				<label for "sel6">2nd Protagonist Trait</label>
+				<select class="form-control" id="sel6">
+					    <option value="">Choose Second Trait</option>
+		                <option value="Male">Male</option>
+		                <option value="Female">Female</option>
+	                    <option value="Couple">Couple</option>
+				</select>				
+			</div>
+		</div>				
+			<script> populateCBoxes(); </script>
+	</form>
 		<!--Change href link when the search page is ready -->
         <button type="button" class="btn btn-default" id="submit">Submit Selections</button>
 		<script>
