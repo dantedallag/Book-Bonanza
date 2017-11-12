@@ -17,7 +17,7 @@
 		return;
 	}
 
-	$resultSet = mysqli_query($connection, 'SELECT title, author, lexile, page_length, genre, trait1, trait2, recommended FROM books');
+	$resultSet = mysqli_query($connection, 'SELECT * FROM books');
 	$avgRating = mysqli_query($connection, 'SELECT AVG(recommended) avg FROM books');
 	$thing = mysqli_fetch_assoc($avgRating);
 	$avg = $thing['avg'];
@@ -67,7 +67,7 @@
 		return $itemB['score'] <=> $itemA['score'];
 	});
 	
-	echo "<table class='table table-striped' align='center'>
+	echo "<table class='table table-striped' align='center;'>
 		<thead>
 		  <tr>
 			<th>Select</th>
@@ -78,22 +78,13 @@
 			<th>Protagonist Trait 1</th>
 			<th>Protagonist Trait 2</th>
 			<th>Recommendations</th>
+			<th style='display:none;'></th>
 		  </tr>
 		</thead>
-		<tbody>
-		  <tr>
-			<td id='t'><input type='checkbox'</td>
-			<td>Sample Book</td>
-			<td>Sample Name</td>
-			<td>Easy</td>
-			<td>100</td>
-			<td>Good</td>
-			<td>Bad</td>
-			<td>3</td>
-		  </tr>";
+		<tbody id='resTable'>";
 	//Should print the recommended books
 	for($i = 0;$i < 10, $i < $resultArray.count();$i++){
-		echo "<r>
+		echo "<tr>
 				<td id = 'row".$i."'><input type='checkbox'></td>";
 		echo "<td>".$resultArray[$i]['title']."</td>";
 		echo "<td>".$resultArray[$i]['author']."</td>";
@@ -102,6 +93,9 @@
 		echo "<td>".$resultArray[$i]['trait1']."</td>";
 		echo "<td>".$resultArray[$i]['trait2']."</td>";
 		echo "<td>".$resultArray[$i]['recommendations']."</td>";
+		//ASK ABOUT DOING BLANK ROW TO STORE IDs
+		echo "<td style='display:none;' id='bID".$i."'>".$resultArray[$i]['id']."</td>";
+		echo "</tr>";
 	}
 
 	echo "</tbody>

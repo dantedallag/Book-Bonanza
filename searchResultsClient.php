@@ -26,8 +26,13 @@
 	<script>
         $("#submit").click(function() {
 			//Holds IDs of books to add to relational table
-			var data = new Array(10);
-			
+			var ids = new Array(10);
+			var tCount = $('#resTable tr').length;
+			for(var i=0;i<tCount;i++){
+				if($('#row'+i).checked)
+					data.push($('#bID'+i).val());
+			}
+			var data = ids.stringify();
 			var url = "searchResultsServerSubmit.php";
 			$.post(url, data, function(res) {
 				var newurl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/studentHome.php';
