@@ -10,7 +10,7 @@
 <!--<script src="TeacherHome.js"></script> -->
 
 <script>
-function loadXMLDocStudent(studentName) {
+function loadXMLDoc(studentName) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -19,26 +19,11 @@ function loadXMLDocStudent(studentName) {
 	};
 	var data = new FormData();
 	data.append('studentName', studentName);
+  //var data = JSON.stringify({ "studentName" : studentName});
   var url = "teacherHomeServerTableUpdate.php";
   xhttp.open("POST", url, true);
   xhttp.send(data);
 }
-
-function loadXMLDocDelete(title,author) {
-	var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-			document.getElementById("tableBody").innerHTML = this.responseText;
-    }
-	};
-	var data = new FormData();
-	data.append('title', title);
-	data.append('author', author)
-  var url = "teacherHomeServerTableUpdate.php";
-  xhttp.open("POST", url, true);
-  xhttp.send(data);
-}
-
 </script>
 
 <script>
@@ -61,19 +46,21 @@ window.onload = loadPage;
 <body>
 <div class="info">
   <form class="student-welcome">
-    <h2 id="teacherHeader">Welcome 'insert teacher name here'!</h2>
+    <h1 id="teacherHeader">Welcome 'insert teacher name here'!</h1>
   </form>
-</div>
-<div>
-</div>
-<div class="booklist">
-  <form class="teacher-welcome">
-    <h2>Your Class' Book List</h2>
-	</form>
-<button type="button" id="addBook">Add Book</button>
+  <form>
+  		<div style="text-align:center">
+  			<h2>Your Class' Book List</h2>
+  		</div>
+  		<div class="add-book">
+    		<button type="button" id="addBook">Add Book</button>
+    	</div>
+  </form>
+
 <script>
 $("#addBook").click(function() {
 	window.location.href = "http://linux.students.engr.scu.edu/~ddallaga/htdocs/TeacherAdd.html";
+
 });
 </script>
 </div>
