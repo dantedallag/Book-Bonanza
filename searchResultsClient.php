@@ -19,20 +19,25 @@
   </form>
 </div>
 <?php
-	include 'searchResultsServer.php'
+	//Return this to normal after the demo
+	//include 'searchResultsServer.php'
+	include 'selectionTEST.php';
 ?>
 <form class="buttons">
-    <input type="button" class="btn btn-default" value="Choose Books!" onclick="window.location.href='studentHome.html'"/>
+    <input type="button" class="btn btn-default" value="Submit Choices!" onclick="window.location.href='studentHome.html'"/>
 	<script>
         $("#submit").click(function() {
 			//Holds IDs of books to add to relational table
-			var ids = new Array(10);
+			var ids = [];
 			var tCount = $('#resTable tr').length;
 			for(var i=0;i<tCount;i++){
 				if($('#row'+i).checked)
-					data.push($('#bID'+i).val());
+					ids.push($('#bID'+i).val());
 			}
-			var data = ids.stringify();
+			if(ids.length == 0)
+				window.location.href = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/studentHome.php';
+			var data = {}
+			data['ids'] = ids;
 			var url = "searchResultsServerSubmit.php";
 			$.post(url, data, function(res) {
 				var newurl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/studentHome.php';
