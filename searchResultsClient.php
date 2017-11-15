@@ -24,23 +24,27 @@
 	include 'selectionTEST.php';
 ?>
 <form class="buttons">
-    <input type="button" class="btn btn-default" value="Submit Choices!" onclick="window.location.href='studentHome.html'"/>
+    <input type="button" id="submit" class="btn btn-default" value="Submit Choices!"/>
 	<script>
         $("#submit").click(function() {
 			//Holds IDs of books to add to relational table
 			var ids = [];
 			var tCount = $('#resTable tr').length;
+			console.log(tCount);
 			for(var i=0;i<tCount;i++){
 				if($('#row'+i).checked)
+					console.log("hello!\n");
 					ids.push($('#bID'+i).val());
 			}
+			console.log("hello again!\n");
 			if(ids.length == 0)
-				window.location.href = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/studentHome.php';
-			var data = {}
-			data['ids'] = ids;
+				window.location.href = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/studentHomeClient.php';
+			var idsString = JSON.stringify(ids);
+			var data = {'idsString' : idsString};
+			console.log(data['idsString']);
 			var url = "searchResultsServerSubmit.php";
 			$.post(url, data, function(res) {
-				var newurl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/studentHome.php';
+				var newurl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/studentHomeClient.php';
 				console.log(res);
 				window.location.href = newurl;
 			});

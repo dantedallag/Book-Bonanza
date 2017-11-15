@@ -41,15 +41,13 @@ echo "<table class='table table-striped' align='center' id='bookTable'>
 <th>Genre</th>
 <th>Protagonist Trait 1</th>
 <th>Protagonist Trait 2</th>
-<th>Recommendations</th>
 <th>Edit</th>
 <th>Delete</th>
 </tr>
 </thead>
 <tbody id = 'tableBody'>";
 
-	$result = mysqli_query($connection, "SELECT title,author,lexile,page_length,genre,trait1,trait2,recommended FROM books"); 
-	//End of sql block
+$result = mysqli_query($connection, "SELECT title,author,lexile,page_length,genre,trait1,trait2,recommended FROM books"); 
 
 $count = 0;
 if(mysqli_num_rows($result) > 0) {
@@ -62,7 +60,7 @@ if(mysqli_num_rows($result) > 0) {
 			echo "<td>" . $row['genre'] . "</td>";
 			echo "<td>" . $row['trait1'] . "</td>";
 			echo "<td>" . $row['trait2'] . "</td>";
-			echo "<td>" . $row['recommended'] . "</td>";
+			//echo "<td>" . $row['recommended'] . "</td>";
 			echo "<td><button type='submit' class='btn btn-default' id='edit" . $count . "' align='center;'>Edit</button>";
 			echo "<script>
 			$(document).on('click','#edit" . $count . "', function()  {
@@ -86,7 +84,8 @@ if(mysqli_num_rows($result) > 0) {
 			</script>";
 			echo "</tr>";
 			$count = $count + 1;
+		}
 	}
-	mysqli_close($connection);
 	echo "</tbody> </table>";
+	mysqli_close($connection);
 ?>

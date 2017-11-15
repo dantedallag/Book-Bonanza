@@ -1,5 +1,9 @@
 <?php
-	$ids = $_POST['ids'];
+    session_start();
+    $ids = $_SESSION['ids'];
+    //$ids2 = json_decode($_POST['idsString']);
+    ///print_r($ids2);
+    //print_r($ids);
 	$host = "dbserver.engr.scu.edu";
     $user = "ddallaga";
     $password = "00001033223";
@@ -10,9 +14,13 @@
     if(!$connection) {
         echo "Error connecting";
     }
-	for($i = 0;$i < $ids.count();$i++){
-		//Need userID here
-		$results = mysqli_query("INSERT INTO chosen VALUES(". .",".$ids[i].", FALSE)");
-	}
+	for($i = 0;$i < count($ids);$i++){
+        //Need userID here
+        $results = mysqli_query($connection, "SELECT id FROM users WHERE person_name = 'Joey'");
+        $row = mysqli_fetch_array($results);
+        $var1 = $row[0];
+        $var2 = $ids[$i][0];
+		$results = mysqli_query($connection, "INSERT INTO chosen(user_id,book_id) VALUES(" . $var1. "," . $var2 . ")");
+    }
 	mysqli_close($connection);
 ?>
