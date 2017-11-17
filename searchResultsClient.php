@@ -25,7 +25,7 @@
 	}
 	//Return this to normal after the demo
 	//include 'searchResultsServer.php'
-	include 'selectionTEST.php';
+	include 'searchResultsServer.php';
 ?>
 <form class="buttons">
     <input type="button" id="submit" class="btn btn-default" value="Submit Choices!"/>
@@ -35,8 +35,8 @@
 			var ids = [];
 			var tCount = $('#resTable tr').length;
 			console.log(tCount);
-			for(var i=0;i<tCount;i++){
-				if($('#row'+i).checked)
+			for(var i = 0;i < tCount;i++){
+				if($('#row' + i).checked)
 					console.log("hello!\n");
 					ids.push($('#bID'+i).val());
 			}

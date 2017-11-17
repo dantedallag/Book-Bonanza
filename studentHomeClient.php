@@ -49,7 +49,7 @@ function loadXMLDoc(studentName) {
 </div>
 <form class="buttons">
   <!--CHANGE THIS BACK TO 'studentSearch.html'-->
-  <input type="button" class="btn btn-default" value="Find a New Book" onclick="window.location.href='searchResultsClient.php'" />
+  <input type="button" class="btn btn-default" value="Find a New Book" onclick="window.location.href='studentSearch.html'" />
 </form>
 <div id="table"> </div>
 <?php

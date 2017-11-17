@@ -37,7 +37,7 @@
 			</select>
 		</div>
 		<div class="form-group1" style=bl>
-			<label for "sel2">Lexile Level</label>
+			<label for "sel2">Lexile Level(Required)</label>
 			<input type="text" style="width: 200px" class="form-control" id="sel2"/>
 		</div>
 		<div class="form-group1" style=bl>
@@ -72,21 +72,24 @@
 				<label for "sel5">1st Protagonist Trait</label>
 				<select class="form-control" id="sel5">
 					<option value="">Choose First Trait</option>
-                    <option value="Short">African American</option>
-                    <option value="Short">Native American</option>
-                    <option value="Medium">Mexican American</option>
-                    <option value="Long">Scandinavian American</option>
-                    <option value="Medium">Hispanic</option>
-                    <option value="Medium">Chilean</option>
-                    <option value="Long">Pakistani</option>
-                    <option value="Short">Hatian</option>
-                    <option value="Long">Polish</option>
-                    <option value="Short">Persian</option>
-                    <option value="Medium">Afghanistani</option>
+                    <option value="">African American</option>
+                    <option value="">Native American</option>
+                    <option value="">Mexican American</option>
+                    <option value="">Scandinavian American</option>
+                    <option value="">Hispanic</option>
+                    <option value="">Chilean</option>
+                    <option value="">Pakistani</option>
+                    <option value="">Hatian</option>
+                    <option value="">Polish</option>
+                    <option value="">Persian</option>
+                    <option value="">Afghanistani</option>
                     <option value="Long">Interacial</option>
                     <option value="Short">Biracial</option>
                     <option value="Long">Young</option>
                     <option value="Medium">Dog</option>
+					<option>Male</option>
+					<option>Female</option>
+					<option>Couple</option>
 				</select>			
 			</div>
            	<div class="col-xs-3 selectContainer">
@@ -107,8 +110,8 @@
 		$("#submit").click( function() {
 			var data = new Object();
 			data.author = $("#sel1 option: selected").text();
-			data.lexile = $("#sel2").value();
-			data.length = $("#sel3 option: selected").text();
+			data.lexile = $("#sel2").val();
+			data.length = $("#sel3").val();
 			data.genre = $("#sel4 option: selected").text();
 			data.trait1 = $("#sel5 option: selected").text();
 			data.trait2 = $("#sel6 option: selected").text();
