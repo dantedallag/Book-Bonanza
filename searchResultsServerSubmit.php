@@ -16,11 +16,11 @@
     }
 	for($i = 0;$i < count($ids);$i++){
         //Need userID here
-        $results = mysqli_query($connection, "SELECT id FROM users WHERE person_name = 'Joey'");
+        $results = mysqli_query($connection, "SELECT id FROM users WHERE person_name = '" .$_SESSION['name'] . "'");
         $row = mysqli_fetch_array($results);
         $var1 = $row[0];
         $var2 = $ids[$i][0];
-		$results = mysqli_query($connection, "INSERT INTO chosen(user_id,book_id) VALUES(" . $var1. "," . $var2 . ")");
+		$results = mysqli_query($connection, "INSERT INTO chosen(user_id,book_id,recommended) VALUES(" . $var1. "," . $var2 . ",0)");
     }
 	mysqli_close($connection);
 ?>

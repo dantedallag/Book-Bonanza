@@ -47,7 +47,7 @@ echo "<table class='table table-striped' align='center' id='bookTable'>
 </thead>
 <tbody id = 'tableBody'>";
 
-$result = mysqli_query($connection, "SELECT title,author,lexile,page_length,genre,trait1,trait2,recommended FROM books"); 
+$result = mysqli_query($connection, "SELECT title,author,lexile,page_length,genre,trait1,trait2,recommendations FROM books"); 
 
 $count = 0;
 if(mysqli_num_rows($result) > 0) {
@@ -60,18 +60,21 @@ if(mysqli_num_rows($result) > 0) {
 			echo "<td>" . $row['genre'] . "</td>";
 			echo "<td>" . $row['trait1'] . "</td>";
 			echo "<td>" . $row['trait2'] . "</td>";
-			//echo "<td>" . $row['recommended'] . "</td>";
-			echo "<td><button type='submit' class='btn btn-default' id='edit" . $count . "' align='center;'>Edit</button>";
+			echo "<td>" . $row['recommendations'] . "</td>";
+			echo "<td><button type='submit' class='btn btn-default' id='edit" . $count . "' align='center;'>Edit</button></td>";
 			echo "<script>
+
+
 			$(document).on('click','#edit" . $count . "', function()  {
 					var title = $('#title" . $count . "').text();
 					var author = $('#author" .$count . "').text();
 					localStorage.setItem('title', title);
 					localStorage.setItem('author', author);
-					var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/TeacherEdit.html';
+					var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/teacherEditClient.php';
 					window.location.href = newUrl;
 				});
 			</script>";
+
 			echo "<td><button type='submit' class='btn btn-default' id='delete" . $count . "' align='center;'>Delete</button></td>";
 			echo "<script>
 			$(document).on('click', '#delete" . $count . "', function() {
@@ -80,7 +83,7 @@ if(mysqli_num_rows($result) > 0) {
 				console.log(author);
 				console.log(title);
 				loadXMLDocDelete(title,author);
-			});
+			}); 
 			</script>";
 			echo "</tr>";
 			$count = $count + 1;

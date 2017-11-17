@@ -18,7 +18,11 @@
     <h2>Search Results</h2>
   </form>
 </div>
-<?php
+<?php 
+	session_start();
+	if( !isset($_SESSION['credentials']) || $_SESSION['credentials'] == true) {
+		header("Location: http://linux.students.engr.scu.edu/~ddallaga/htdocs/");
+	}
 	//Return this to normal after the demo
 	//include 'searchResultsServer.php'
 	include 'selectionTEST.php';

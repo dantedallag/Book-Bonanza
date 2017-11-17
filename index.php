@@ -1,6 +1,9 @@
 <?php
+	session_start();
 	if (isset($_POST['credentials'])) {
 		$var = $_POST['credentials'];
+		$_SESSION['credentials'] = true;
+		$_SESSION['name'] = $_POST['name'];
 		$fh = fopen('teacherCode.txt','r');
 		$line = fgets($fh);
 		fclose($fh);
@@ -9,7 +12,9 @@
 			echo json_encode($response);
 		} 
 	} else if(isset($_POST['name'])) {
+		$_SESSION['credentials'] = false;
 		$personName = $_POST['name'];
+		$_SESSION['name'] = $personName;
 		$host = "dbserver.engr.scu.edu";
 		$user = "ddallaga";
 		$password = "00001033223";

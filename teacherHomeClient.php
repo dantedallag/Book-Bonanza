@@ -10,7 +10,7 @@
 <!--<script src="TeacherHome.js"></script> -->
 
 <script>
-function loadXMLDoc(studentName) {
+function loadXMLDocStudent(studentName) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -40,7 +40,6 @@ function loadXMLDocDelete(title,author) {
   xhttp.open("POST", url, true);
   xhttp.send(data);
 }
-
 </script>
 
 <script>
@@ -56,7 +55,14 @@ function loadPage() {
 }
 window.onload = loadPage;
 </script>
- 
+
+<?php 
+  session_start();
+  if( !isset($_SESSION['credentials']) || $_SESSION['credentials'] == false) {
+      header("Location: http://linux.students.engr.scu.edu/~ddallaga/htdocs/");
+  }
+?>
+
 <link href="studentHome.css" rel="stylesheet">
 </head>
 
@@ -76,7 +82,7 @@ window.onload = loadPage;
 
 <script>
 $("#addBook").click(function() {
-	window.location.href = "http://linux.students.engr.scu.edu/~ddallaga/htdocs/TeacherAdd.html";
+	window.location.href = "http://linux.students.engr.scu.edu/~ddallaga/htdocs/teacherAddClient.php";
 
 });
 </script>

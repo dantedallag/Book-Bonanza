@@ -19,8 +19,8 @@ CREATE TABLE books(
     genre VARCHAR(20),
     trait1 VARCHAR(30),
     trait2 VARCHAR(30),
-    recommended INT,
-    PRIMARY KEY(title,author)
+    recommendations INT,
+    PRIMARY KEY(id)
 );
 
 CREATE TABLE chosen(
