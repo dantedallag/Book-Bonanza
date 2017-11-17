@@ -101,25 +101,24 @@
 	                    <option value="Couple">Couple</option>
 				</select>				
 			</div>
-		</div>				
-			<script> populateCBoxes(); </script>
+		</div>
 	</form>
 		<!--Change href link when the search page is ready -->
         <button type="button" class="btn btn-default" id="submit">Submit Selections</button>
 		<script>
 		$("#submit").click( function() {
-			var data = new Object();
-			data.author = $("#sel1 option: selected").text();
-			data.lexile = $("#sel2").val();
-			data.length = $("#sel3").val();
-			data.genre = $("#sel4 option: selected").text();
-			data.trait1 = $("#sel5 option: selected").text();
-			data.trait2 = $("#sel6 option: selected").text();
+			var author = $("#sel1 :selected").text();
+			var lexile = $("#sel2 :selected").text();
+			var length = $("#sel3").val();
+			var genre = $("#sel4 :selected").text();
+			var trait1 = $("#sel5 :selected").text();
+			var trait2 = $("#sel6 :selected").text();
+			var data = {'author': author, 'lexile': lexile, 'length': length, 'genre': genre, 'trait1': trait1, 'trait2': trait2}
 			var url = "searchResultsServer.php";
-			$.post(url, data, function(res)) {
+			$.post(url, data, function(res) {
 				var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/searchResultsClient.php';
 				console.log(res);
-				window.location.href = newUrl;
+				//window.location.href = newUrl;
 			});
 		});
 		</script>
