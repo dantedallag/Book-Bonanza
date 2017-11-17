@@ -25,6 +25,9 @@
 		if(!$connection) {
 			echo "Error connecting";
 		}
+		$result = mysqli_query($connection, "SELECT id FROM users WHERE person_name = '" . $personName . "'");
+		$row = mysqli_fetch_array($row);
+		$_SESSION['student_id'] = $row['id'];
 		$result = mysqli_query($connection, "INSERT INTO users(person_name,is_teacher) VALUES('".$personName."', false)"); 
 		echo "user in database now";
 
