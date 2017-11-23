@@ -22,8 +22,8 @@
     <th>Genre</th>
     <th>Protagonist Trait 1</th>
     <th>Protagonist Trait 2</th>
-    <th>Recommended</th>
-    <th>Recommendations</th>
+    <th>Recommendations </th>
+    <th>Recommend</th>
     </tr>
     </thead>
     <tbody>";
@@ -53,6 +53,10 @@
                     console.log(data);
                     $.post(url,data,function(res) { 
                         console.log(res);
+                        if(res == 'already recommeded') {
+
+                            $('#recommend" . $count . "').prop('disabled', true);
+                        }
                         console.log('yay recommended!');
                         var studentName = localStorage.getItem('name');
                         $('#bookTable').empty();

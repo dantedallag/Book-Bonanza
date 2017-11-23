@@ -127,6 +127,12 @@
         <button type="button" class="btn btn-default" id="submit">Submit</button>
         <script>
         $("#submit").click(function() {
+            var recommendation;
+            if($("#Popularity option:selected").text() == "Recommended") {
+                recommendation = 1;
+            } else {
+                recommendation = 0;
+            }
             var title = $("#Title").val();
             var author = $("#Author").val();
             var readingLevel = $("#ReadingLevel").val();
@@ -134,7 +140,7 @@
             var genre = $("#Genre option:selected").text();
             var trait1 = $("#Trait1 option:selected").text();
             var trait2 = $("#Trait2 option:selected").text();
-            var data = {"title": title, "author": author, "readingLevel": readingLevel, "length": length, "genre": genre, "trait1": trait1, "trait2": trait2};
+            var data = {"recommendations": recommendation, "title": title, "author": author, "readingLevel": readingLevel, "length": length, "genre": genre, "trait1": trait1, "trait2": trait2};
             console.log(data);
             var url = "teacherAddServer.php";
             $.post(url,data,function(res) {

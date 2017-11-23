@@ -47,7 +47,7 @@
 			$.post(url, data, function(res) {
 				var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/studentHomeClient.php';
 				console.log(res);
-				//window.location.href = newUrl;
+				window.location.href = newUrl;
 			});
 		});
 	</script>
