@@ -1,6 +1,6 @@
 <!DOCTYPE html> 
 <html lang="en">
- 
+
 <head>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -18,13 +18,7 @@
     <h2>Search Results</h2>
   </form>
 </div>
-<?php 
-	session_start();
-	if( !isset($_SESSION['credentials']) || $_SESSION['credentials'] == true) {
-		header("Location: http://linux.students.engr.scu.edu/~ddallaga/htdocs/");
-	}
-	//Return this to normal after the demo
-	//include 'searchResultsServer.php'
+<?php
 	include 'searchResultsServer.php';
 ?>
 <form class="buttons">
@@ -35,8 +29,8 @@
 			var ids = [];
 			var tCount = $('#resTable tr').length;
 			console.log(tCount);
-			for(var i = 0;i < tCount;i++){
-				if($('#row' + i).checked)
+			for(var i=0;i<tCount;i++){
+				if($('#row'+i).checked)
 					console.log("hello!\n");
 					ids.push($('#bID'+i).val());
 			}
@@ -48,7 +42,7 @@
 			console.log(data['idsString']);
 			var url = "searchResultsServerSubmit.php";
 			$.post(url, data, function(res) {
-				var newurl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/studentHomeClient.php';
+				var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/studentHomeClient.php';
 				console.log(res);
 				window.location.href = newurl;
 			});

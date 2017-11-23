@@ -10,7 +10,6 @@
 <link href="studentHome.css" rel="stylesheet">
 
 <script>
-
 function loadXMLDoc(studentName) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -31,15 +30,14 @@ function loadXMLDoc(studentName) {
   function loadName() {
     var studentName = localStorage.getItem("name");
     document.getElementById("studentHeader").innerHTML = "Welcome " + studentName + "!";
-    //loadXMLDoc(studentName);
+    loadXMLDoc(studentName);
   }
   window.onload = loadName;
 </script>
 
-<?php 
- 
-?>
 </head>
+
+
 
 <body>
 <div class="info">
@@ -49,12 +47,9 @@ function loadXMLDoc(studentName) {
 </div>
 <form class="buttons">
   <!--CHANGE THIS BACK TO 'studentSearch.html'-->
-  <input type="button" class="btn btn-default" value="Find a New Book" onclick="window.location.href='studentSearch.html'" />
+  <input type="button" class="btn btn-default" value="Find a New Book" onclick="window.location.href='studentSearch.php'" />
 </form>
-<div id="table"> </div>
-<?php
-  require 'studentHomeServer.php';
-?>
+<div id="table" />
 </body>
 </html>
 <!-- <script type="text/javascript">

@@ -1,10 +1,11 @@
 <?php
-	$author = $_POST['author'];
-	$lexile = $_POST['lexile'];
-	$length = $_POST['length'];
-	$genre = $_POST['genre'];
-	$trait1 = $_POST['trait1'];
-	$trait2 = $_post['trait2'];
+	session_start();
+	$author = $_SESSION['author'];
+	$lexile = $_SESSION['lexile'];
+	$length = $_SESSION['length'];
+	$genre = $_SESSION['genre'];
+	$trait1 = $_SESSION['trait1'];
+	$trait2 = $_SESSION['trait2'];
 	$host = "dbserver.engr.scu.edu";
 	$user = "ddallaga";
 	$password = "00001033223";
@@ -24,7 +25,7 @@
 	
 	if(mysqli_num_rows($resultSet) > 0){
 		$resultArray = array();
-		while($row = mysqli_fetch_array($resultSet){
+		while($row = mysqli_fetch_array($resultSet)){
 			$score = 0.0;
 			if($row['lexile'] <= $lexile)
 				$score += 1.0;
@@ -47,13 +48,12 @@
 				if($row['page_length'] <= ($length + 25) || $row['page_length'] >= ($length - 25))
 					$score += 0.52;
 			}
-			
 			if($row['genre'] === $genre)
 				$score += 0.36;
 			
-			if(row['trait1'] === $trait1 || row['trait1'] === $trait2)
+			if($row['trait1'] === $trait1 || $row['trait1'] === $trait2)
 				$score += 0.1;
-			if(row['trait2'] === $trait1 || row['trait2'] === $trait2)
+			if($row['trait2'] === $trait1 || $row['trait2'] === $trait2)
 				$score += 0.1;
 			//Change this value as needed
 			if($score < 1.0)
@@ -63,9 +63,12 @@
 		}
 	}
 	//Should sort the array by sub associative arrays by the 'score' key
-	usort($resultArray, function ($itemA, $itemB){
-		return $itemB['score'] <=> $itemA['score'];
-	});
+	/*usort($resultArray, function ($itemA, $itemB){
+		return $itemA['score'] - $itemB['score'];
+	});*/
+	foreach($resultArray as $key => $row)
+		$sort[$key] = $row['score'];
+	array_multisort($sort, SORT_DESC, $resultArray); 
 	
 	echo "<table class='table table-striped' align='center;'>
 		<thead>
@@ -83,7 +86,8 @@
 		</thead>
 		<tbody id='resTable'>";
 	//Should print the recommended books
-	for($i = 0;$i < 10, $i < $resultArray.count();$i++){
+	//style='display:none;'
+	for($i = 0;$i < 10, $i < count($resultArray);$i++){
 		echo "<tr>
 				<td id = 'row".$i."'><input type='checkbox'></td>";
 		echo "<td>".$resultArray[$i]['title']."</td>";
@@ -92,9 +96,9 @@
 		echo "<td>".$resultArray[$i]['page_length']."</td>";
 		echo "<td>".$resultArray[$i]['trait1']."</td>";
 		echo "<td>".$resultArray[$i]['trait2']."</td>";
-		echo "<td>".$resultArray[$i]['recommendations']."</td>";
-		//ASK ABOUT DOING BLANK ROW TO STORE IDs
+		echo "<td>".$resultArray[$i]['recommended']."</td>";
 		echo "<td style='display:none;' id='bID".$i."'>".$resultArray[$i]['id']."</td>";
+		echo $resultArray[$i]['score']." ";
 		echo "</tr>";
 	}
 

@@ -11,16 +11,16 @@ CREATE TABLE users(
 );
 
 CREATE TABLE books(
-    id INT NOT NULL AUTO_INCREMENT,
+	id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(50),
     author VARCHAR(50),
-    lexile VARCHAR(20),
-    page_length VARCHAR(20),
+    lexile INT,
+    page_length INT,
     genre VARCHAR(20),
     trait1 VARCHAR(30),
     trait2 VARCHAR(30),
-    recommendations INT,
-    PRIMARY KEY(id)
+    recommended INT,
+    PRIMARY KEY(id, title, author)
 );
 
 CREATE TABLE chosen(
