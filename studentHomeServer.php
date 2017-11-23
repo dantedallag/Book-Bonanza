@@ -1,7 +1,7 @@
 <?php
-	session_start();
-    //$_POST = json_decode(file_get_contents('php://input'), true);
-    $studentName = $_POST['studentName'];
+    error_reporting(0);
+    session_start();
+    $studentName = $_SESSION['name'];
     $host = "dbserver.engr.scu.edu";
     $user = "ddallaga";
     $password = "00001033223";
@@ -12,33 +12,27 @@
     if(!$connection) {
         echo "Error connecting";
     }
-
-	$result = mysqli_query($connection, "SELECT id FROM users WHERE person_name='".$studentName."'");
-	$row = mysqli_fetch_array($result);
-	$_SESSION['uID'] = $row['id'];
-	
-    
-
-    $result = mysqli_query($connection, "SELECT title,author,lexile,page_length,genre,trait1,trait2 FROM books INNER JOIN chosen ON chosen.book_id = books.id INNER JOIN users ON ('". $studentName . "' = users.person_name AND users.id = chosen.user_id)"); 
-
+    echo "<table class='table table-striped' align='center' id='bookTable'>
+    <thead>
+    <tr>
+    <th>Book Title</th>
+    <th>Author</th>
+    <th>Lexile Level</th>
+    <th>Length</th>
+    <th>Genre</th>
+    <th>Protagonist Trait 1</th>
+    <th>Protagonist Trait 2</th>
+    <th>Recommended</th>
+    <th>Recommendations</th>
+    </tr>
+    </thead>
+    <tbody>";
+    $result = mysqli_query($connection, "SELECT title,author,lexile,page_length,genre,trait1,trait2,recommendations FROM books INNER JOIN chosen ON chosen.book_id = books.id INNER JOIN users ON ('". $studentName . "' = users.person_name AND users.id = chosen.user_id)"); 
     $count = 0;
     if(mysqli_num_rows($result) > 0) {
-		echo "<table class='table table-striped' align='center' id='bookTable'>
-		<thead>
-		<tr>
-		<th>Book Title</th>
-		<th>Author</th>
-		<th>Lexile Level</th>
-		<th>Length</th>
-		<th>Genre</th>
-		<th>Protagonist Trait 1</th>
-		<th>Protagonist Trait 2</th>
-		<th>Recommendations</th>
-		</tr>
-		</thead>
-		<tbody>";
         while($row = mysqli_fetch_array($result)) {
                 echo "<tr>";
+              
                 echo "<td id='title" . $count . "'>" . $row['title'] . "</td>";
                 echo "<td id='author" . $count . "'>" . $row['author'] . "</td>";
                 echo "<td>" . $row['lexile'] . "</td>";
@@ -46,28 +40,34 @@
                 echo "<td>" . $row['genre'] . "</td>";
                 echo "<td>" . $row['trait1'] . "</td>";
                 echo "<td>" . $row['trait2'] . "</td>";
-                echo "<td> Maybe </td>";
-                /*echo "<script>
-                    $('#edit" . $count ."').click(function() {
-                        var title = $('#title" . $count . "').text();
-                        var author = $('#author" .$count . "').text();
-                        localStorage.setItem('title', title);
-                        localStorage.setItem('author', author);
-                        console.log(title);
-                        console.log(author);
-                        var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/TeacherEdit.html';
-                        window.location.href = newUrl;
+                echo "<td>"  . $row['recommendations'] . "</td>";
+                echo "<td><button type='submit' class='btn btn-default' id='recommend" . $count . "'align='center;'>Recommend</button></td>";
+                echo "<script>
+                console.log('hello');
+                $(document).on('click', '#recommend" . $count . "', function() {
+                    var title = $('#title" . $count . "').text();
+                    var author = $('#author" . $count . "').text();
+                    console.log('hey');
+                    var url = 'Recommend.php';
+                    var data = {'title': title, 'author': author};
+                    console.log(data);
+                    $.post(url,data,function(res) { 
+                        console.log(res);
+                        console.log('yay recommended!');
+                        var studentName = localStorage.getItem('name');
+                        $('#bookTable').empty();
+                        loadXMLDoc(studentName);
                     });
-                </script>";
-                */
-                //echo "<td><button type='submit' class='btn btn-default' id='delete' align='center;'>Delete</button></td>";
-                echo "</tr>";
-                $count = $count + 1;
+                });
+            </script>";
+            echo "<script>
+            console.log('wowowowo');
+            </script>";
+            echo "</tr>";
+            $count = $count + 1;
         }
     } else {
-		echo "<p align='center'>";
         echo "You have not chosen any books yet";
-		echo "</p>";
     }
     mysqli_close($connection);
     echo "</tbody> </table>";

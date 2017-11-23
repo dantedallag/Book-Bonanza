@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <!--This is the search page for students-->
 <!--TODO: Need to change pre-populated values/draw from MySQL, change Lexile and Length to text entry, filter results if blank-->
@@ -129,5 +130,4 @@
 		</script>
 </div>
 </body>
-
 </html>

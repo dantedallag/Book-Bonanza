@@ -19,7 +19,7 @@
 	}
 
 	$resultSet = mysqli_query($connection, 'SELECT * FROM books');
-	$avgRating = mysqli_query($connection, 'SELECT AVG(recommended) avg FROM books');
+	$avgRating = mysqli_query($connection, 'SELECT AVG(recommendations) avg FROM books');
 	$thing = mysqli_fetch_assoc($avgRating);
 	$avg = $thing['avg'];
 	
@@ -41,7 +41,7 @@
 			if($row['author'] === $author)
 				$score += 0.84;
 			
-			if($row['recommended'] >= $avg)
+			if($row['recommendations'] >= $avg)
 				$score += 0.68;
 			//Need to know how length is done
 			if($length > 0){
@@ -89,14 +89,14 @@
 	//style='display:none;'
 	for($i = 0;$i < 10, $i < count($resultArray);$i++){
 		echo "<tr>
-				<td id = 'row".$i."'><input type='checkbox'></td>";
+				<td id = 'row".$i."'><input id='check" .$i."' type='checkbox'></td>";
 		echo "<td>".$resultArray[$i]['title']."</td>";
 		echo "<td>".$resultArray[$i]['author']."</td>";
 		echo "<td>".$resultArray[$i]['lexile']."L</td>";
 		echo "<td>".$resultArray[$i]['page_length']."</td>";
 		echo "<td>".$resultArray[$i]['trait1']."</td>";
 		echo "<td>".$resultArray[$i]['trait2']."</td>";
-		echo "<td>".$resultArray[$i]['recommended']."</td>";
+		echo "<td>".$resultArray[$i]['recommendations']."</td>";
 		echo "<td style='display:none;' id='bID".$i."'>".$resultArray[$i]['id']."</td>";
 		echo $resultArray[$i]['score']." ";
 		echo "</tr>";

@@ -30,21 +30,24 @@
 			var tCount = $('#resTable tr').length;
 			console.log(tCount);
 			for(var i=0;i<tCount;i++){
-				if($('#row'+i).checked)
-					console.log("hello!\n");
-					ids.push($('#bID'+i).val());
+				console.log("yay");
+				if($('#check'+i).prop('checked')) {
+					console.log("#bID" + i + "\n");
+					ids.push($('#bID'+i).text());
+				}
 			}
 			console.log("hello again!\n");
 			if(ids.length == 0)
 				window.location.href = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/studentHomeClient.php';
+			console.log(ids);
 			var idsString = JSON.stringify(ids);
+			console.log(idsString);
 			var data = {'idsString' : idsString};
-			console.log(data['idsString']);
 			var url = "searchResultsServerSubmit.php";
 			$.post(url, data, function(res) {
 				var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/studentHomeClient.php';
 				console.log(res);
-				window.location.href = newurl;
+				//window.location.href = newUrl;
 			});
 		});
 	</script>

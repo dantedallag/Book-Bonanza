@@ -140,7 +140,7 @@
             console.log(data);
             var url = "teacherEdit.php";
             $.post(url,data,function(res) {
-				var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/teacherHome.php';
+				var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/teacherHomeClient.php';
                 console.log(res);
 				window.location.href = newUrl;
             });

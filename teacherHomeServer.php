@@ -41,6 +41,7 @@ echo "<table class='table table-striped' align='center' id='bookTable'>
 <th>Genre</th>
 <th>Protagonist Trait 1</th>
 <th>Protagonist Trait 2</th>
+<th>Recommendations</th>
 <th>Edit</th>
 <th>Delete</th>
 </tr>

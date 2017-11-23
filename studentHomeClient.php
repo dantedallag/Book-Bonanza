@@ -1,6 +1,6 @@
 <!DOCTYPE html> 
 <html lang="en">
- 
+
 <head>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -30,14 +30,19 @@ function loadXMLDoc(studentName) {
   function loadName() {
     var studentName = localStorage.getItem("name");
     document.getElementById("studentHeader").innerHTML = "Welcome " + studentName + "!";
-    loadXMLDoc(studentName);
+    //loadXMLDoc(studentName);
   }
   window.onload = loadName;
 </script>
 
+<?php
+session_start();
+if( !isset($_SESSION['credentials']) || $_SESSION['credentials'] == true) {
+        header("Location: http://linux.students.engr.scu.edu/~ddallaga/htdocs/");
+}
+?>
+
 </head>
-
-
 
 <body>
 <div class="info">
@@ -49,9 +54,9 @@ function loadXMLDoc(studentName) {
   <!--CHANGE THIS BACK TO 'studentSearch.html'-->
   <input type="button" class="btn btn-default" value="Find a New Book" onclick="window.location.href='studentSearch.php'" />
 </form>
-<div id="table" />
+<div id="table"> </div>
+<?php
+require 'studentHomeServer.php';
+?>
 </body>
 </html>
-<!-- <script type="text/javascript">
-  loadName();
-</script> -->
