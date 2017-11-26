@@ -17,11 +17,14 @@
 		echo "Error connecting";
 		return;
 	}
-
-	$resultSet = mysqli_query($connection, 'SELECT * FROM books');
+	//$idSet = mysqli_query($connection, "SELECT id FROM users WHERE person_name='".$_SESSION['name']."'");
+	//$idRow = mysqli_fetch_array($idSet);
+	//$userID = $idrow[0];
+	$resultSet = mysqli_query($connection, 'SELECT * FROM books B');
 	$avgRating = mysqli_query($connection, 'SELECT AVG(recommendations) avg FROM books');
 	$thing = mysqli_fetch_assoc($avgRating);
 	$avg = $thing['avg'];
+	
 	
 	if(mysqli_num_rows($resultSet) > 0){
 		$resultArray = array();

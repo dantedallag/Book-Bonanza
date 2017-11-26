@@ -33,6 +33,10 @@
             <label for="ReadingLevel">Reading Level</label>
             <input type="text" style="width: 200px" class="form-control" id="ReadingLevel"/>
         </div>
+		<div class="form-group1">
+			<label for="Length">Length</label>
+			<input type="number" style="width: 200px" class="form-control" id="Length"/>
+		</div>
     </form>
     <form style="padding-left: 45px; width=3000px;">
         <div class="form-group21">
@@ -42,24 +46,6 @@
                     <option value="Select">Select--</option>
                     <option value="Recommended">Recommended</option>
                     <option value="Not Recommended">Not Recommended</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group22">
-            <div class="col-xs-3 selectContainer">
-                <label for="Length">Length</label> <!--1-100,100-200,200-300,300-400,400-500,500+-->
-                <select class="form-control" id="Length">
-                    <option value="">Choose Length In Pages</option>
-                    <option value="1-100">1-100</option>
-                    <option value="101-200">101-200</option>
-                    <option value="201-300">201-300</option>
-                    <option value="301-400">301-400</option>
-                    <option value="401-500">401-500</option>
-                    <option value="501-600">501-600</option>
-                    <option value="601-700">601-700</option>
-                    <option value="701-800">701-800</option>
-                    <option value="801-900">801-900</option>
-                    <option value="901-1000">901-1000</option>
                 </select>
             </div>
         </div>
@@ -81,6 +67,8 @@
                     <option value="Science Fiction">Science Fiction</option>
                     <option value="Mystery">Mystery</option>
                     <option value="Horror">Horror</option>
+					<option value="Biography">Biography</option>
+					<option value="Picture Book">Picture Book</option>
                 </select>
             </div>
         </div>
@@ -99,14 +87,18 @@
                     <option value="Medium">Hispanic</option>
                     <option value="Medium">Chilean</option>
                     <option value="Long">Pakistani</option>
-                    <option value="Short">Hatian</option>
+                    <option value="Short">Haitian</option>
                     <option value="Long">Polish</option>
                     <option value="Short">Persian</option>
                     <option value="Medium">Afghanistani</option>
-                    <option value="Long">Interacial</option>
+                    <option value="Long">Interracial</option>
                     <option value="Short">Biracial</option>
                     <option value="Long">Young</option>
                     <option value="Medium">Dog</option>
+					<option>Male</option>
+					<option>Female</option>
+					<option>Couple</option>
+					<option>Animal</option>
                 </select>
             </div>
         </div>
@@ -132,7 +124,7 @@
             var title = $("#Title").val();
             var author = $("#Author").val();
             var readingLevel = $("#ReadingLevel").val();
-            var length = $("#Length option:selected").text();
+            var length = $("#Length").val();
             var genre = $("#Genre option:selected").text();
             var trait1 = $("#Trait1 option:selected").text();
             var trait2 = $("#Trait2 option:selected").text();

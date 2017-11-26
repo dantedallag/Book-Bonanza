@@ -30,11 +30,7 @@
 	<form>
 		<div class="form-group1" style=bl>
 			<label for "sel1">Author</label>
-			<select class="form-control" style="width: 200px" id="sel1">
-					<option value="">Choose Author</option>
-					<option value="Historical Fiction">Test1</option>
-					<option value="Children's Literature">Test2</option>
-			</select>
+			<input type="text" style="width: 200px" class="form-control" id="sel1"/>
 		</div>
 		<div class="form-group1" style=bl>
 			<label for "sel2">Lexile Level(Required)</label>
@@ -64,6 +60,8 @@
 					<option value="Science Fiction">Science Fiction</option>
 					<option value="Mystery">Mystery</option>
 					<option value="Horror">Horror</option>
+					<option value="Biography">Biography</option>
+					<option value="Picture Book">Picture Book</option>
 				</select>
 			</div>
 		</div>
@@ -79,17 +77,18 @@
                     <option value="">Hispanic</option>
                     <option value="">Chilean</option>
                     <option value="">Pakistani</option>
-                    <option value="">Hatian</option>
+                    <option value="">Haitian</option>
                     <option value="">Polish</option>
                     <option value="">Persian</option>
                     <option value="">Afghanistani</option>
-                    <option value="Long">Interacial</option>
+                    <option value="Long">Interracial</option>
                     <option value="Short">Biracial</option>
                     <option value="Long">Young</option>
                     <option value="Medium">Dog</option>
 					<option>Male</option>
 					<option>Female</option>
 					<option>Couple</option>
+					<option>Animal</option>
 				</select>			
 			</div>
            	<div class="col-xs-3 selectContainer">
@@ -107,10 +106,10 @@
         <button type="button" class="btn btn-default" id="submit">Submit Selections</button>
 		<script>
 		$("#submit").click( function() {
-			var author = $("#sel1 :selected").text();
+			var author = $("#sel1").val();
 			var lexile = $("#sel2").val();
 			if(lexile == ""){
-				alert("Please enter your reading level.");
+				alert("Please enter your Lexile Level.");
 				return;
 			}
 			var length = $("#sel3").val();
@@ -119,7 +118,6 @@
 			var trait2 = $("#sel6 :selected").text();
 			var data = {"author": author, "lexile": lexile, "length": length, "genre": genre, "trait1": trait1, "trait2": trait2};
 			console.log(data);
-			//var data = {'author': author};
 			var url = "studentSearchServer.php";
 			$.post(url,data,function(res) {
 				var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/searchResultsClient.php';
