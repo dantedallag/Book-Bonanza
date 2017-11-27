@@ -37,27 +37,45 @@ function logOut() {
     <form>
         <div class="form-group1">
             <label for="Title">Title</label>
-            <input type="text" style="width: 200px" class="form-control" id="Title"/>
+            <input type="text" onblur="titleFilter()" style="width: 200px" class="form-control" id="Title"/>
+            <script>
+                function titleFilter() {
+                    var x = document.getElementById("Title").value;
+                    console.log(x);
+                    var Exp = /^[1-9a-z\s]*$/i;
+                    if(!x.match(Exp))
+                        alert("You must enter an actual title.")
+                }
+            </script>
         </div>
         <div class="form-group1" style=bl>
             <label for="Author">Author</label>
-            <input type="text" style="width: 200px" class="form-control" id="Author"/>
+            <input type="text" onblur="authorFilter()" style="width: 200px" class="form-control" id="Author"/>
+            <script>
+                function authorFilter() {
+                    var x = document.getElementById("Author").value;
+                    console.log(x);
+                    var Exp = /^[a-z\s]*$/i;
+                    if(!x.match(Exp))
+                        alert("You must enter an author's name.")
+                }
+            </script>
         </div>
         <div class="form-group1">
             <label for="ReadingLevel">Reading Level</label>
-            <input type="text" style="width: 200px" class="form-control" id="ReadingLevel"/>
+            <input type="number" min="1" pattern="^[1-9]\d*$"  style="width: 200px" class="form-control" id="ReadingLevel"/>
         </div>
 		<div class="form-group1">
 			<label for="Length">Length</label>
-			<input type="number" style="width: 200px" class="form-control" id="Length"/>
+			<input type="number" min="1" pattern="^[1-9]\d*$"  style="width: 200px" class="form-control" id="Length"/>
 		</div>
     </form>
-    <form style="padding-left: 45px; width=3000px;">
+    <form style="padding-left: 145px; width=3000px;">
         <div class="form-group21">
             <div class="col-xs-3 selectContainer">
                 <label for="Popularity">Recommended</label> <!--Popular = >4 recs, Medium = 2-4 recs, Not = 0-1--> 
                 <select class="form-control" id="Popularity">
-                    <option value="Select">Select--</option>
+                    <option selected='selected' disabled value="Select">Select--</option>
                     <option value="Recommended">Recommended</option>
                     <option value="Not Recommended">Not Recommended</option>
                 </select>
@@ -67,7 +85,7 @@ function logOut() {
             <div class="col-xs-3 selectContainer">
                 <label for="Genre">Genre</label>
                 <select class="form-control" id="Genre">
-                    <option value="">Choose Genre</option>
+                    <option selected='selected' disabled value="">Choose Genre</option>
                     <option value="Historical Fiction">Historical Fiction</option>
                     <option value="Children's Literature">Children's Literature</option>
                     <option value="Fantasy">Fantasy</option>
@@ -93,7 +111,7 @@ function logOut() {
             <div class="col-xs-3 selectContainer">
                 <label for="Trait1">Protagonist Trait 1</label>
                 <select class="form-control" id="Trait1">
-                    <option value="">Choose First Trait</option>
+                    <option selected='selected' disabled value="">Choose First Trait</option>
                     <option value="Short">African American</option>
                     <option value="Short">Native American</option>
                     <option value="Medium">Mexican American</option>
@@ -120,7 +138,7 @@ function logOut() {
             <div class="col-xs-3 selectContainer">
                 <label for="Trait1">Protagonist Trait 2</label> 
                 <select class="form-control" id="Trait2">
-                    <option value="">Choose Second Trait</option>
+                    <option selected='selected' disabled value="">Choose Second Trait</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                     <option value="Couple">Couple</option>

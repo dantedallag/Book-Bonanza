@@ -44,15 +44,24 @@ function logOut() {
 	<form>
 		<div class="form-group1" style=bl>
 			<label for "sel1">Author</label>
-			<input type="text" style="width: 200px" class="form-control" id="sel1"/>
+			<input type="text" onblur="authorFilter()" style="width: 200px" class="form-control" id="sel1"/>
+            <script>
+                function authorFilter() {
+                    var x = document.getElementById("sel1").value;
+                    console.log(x);
+                    var Exp = /^[a-z\s]*$/i;
+                    if(!x.match(Exp))
+                        alert("You must enter an author's name.")
+                }
+            </script>
 		</div>
 		<div class="form-group1" style=bl>
 			<label for "sel2">Lexile Level(Required)</label>
-			<input type="number" style="width: 200px" class="form-control" id="sel2"/>
+			<input type="number" min="1" pattern="^[1-9]\d*$" style="width: 200px" class="form-control" id="sel2"/>
 		</div>
 		<div class="form-group1" style=bl>
 			<label for "sel3">Length</label>
-			<input type="number" style="width: 200px" class="form-control" id="sel3"/>
+			<input type="number" min="1" pattern="^[1-9]\d*$" style="width: 200px" class="form-control" id="sel3"/>
 		</div>
 	</form>
 	<form style="padding-left: 50px; width=3000px;">
@@ -60,7 +69,7 @@ function logOut() {
 			<div class="col-xs-3 selectContainer">
 				<label for "sel4">Genre</label>
 				<select class="form-control" id="sel4">
-					<option value="">Choose Genre</option>
+					<option selected='selected' disabled value="">Choose Genre</option>
 					<option value="Historical Fiction">Historical Fiction</option>
 					<option value="Children's Literature">Children's Literature</option>
 					<option value="Fantasy">Fantasy</option>
@@ -83,7 +92,7 @@ function logOut() {
            	<div class="col-xs-3 selectContainer">
 				<label for "sel5">1st Protagonist Trait</label>
 				<select class="form-control" id="sel5">
-					<option value="">Choose First Trait</option>
+					<option selected='selected' disabled value="">Choose First Trait</option>
                     <option value="">African American</option>
                     <option value="">Native American</option>
                     <option value="">Mexican American</option>
@@ -108,7 +117,7 @@ function logOut() {
            	<div class="col-xs-3 selectContainer">
 				<label for "sel6">2nd Protagonist Trait</label>
 				<select class="form-control" id="sel6">
-					    <option value="">Choose Second Trait</option>
+					    <option selected='selected' disabled value="">Choose Second Trait</option>
 		                <option value="Male">Male</option>
 		                <option value="Female">Female</option>
 	                    <option value="Couple">Couple</option>
