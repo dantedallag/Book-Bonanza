@@ -8,9 +8,26 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  
 <link href="studentHome.css" rel="stylesheet">
+<script>
+function logOut() {
+	window.location.href = "/~ddallaga/htdocs/";
+}
+</script>
+
+<style>
+.logout{
+
+   position:fixed;
+   right:10px;
+   top:5px;
+}
+</style>
+
+
 </head>
 
 <body>
+<button class="logout" onclick="logOut()">logout</button>
 <div class="info">
 </div>
 <div class="booklist">
@@ -38,14 +55,14 @@
 			}
 			console.log("hello again!\n");
 			if(ids.length == 0)
-				window.location.href = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/studentHomeClient.php';
+				window.location.href = '/~ddallaga/htdocs/studentHomeClient.php';
 			console.log(ids);
 			var idsString = JSON.stringify(ids);
 			console.log(idsString);
 			var data = {'idsString' : idsString};
 			var url = "searchResultsServerSubmit.php";
 			$.post(url, data, function(res) {
-				var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/studentHomeClient.php';
+				var newUrl = '/~ddallaga/htdocs/studentHomeClient.php';
 				console.log(res);
 				window.location.href = newUrl;
 			});

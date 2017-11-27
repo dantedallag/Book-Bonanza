@@ -59,14 +59,32 @@ window.onload = loadPage;
 <?php 
   session_start();
   if( !isset($_SESSION['credentials']) || $_SESSION['credentials'] == false) {
-      header("Location: http://linux.students.engr.scu.edu/~ddallaga/htdocs/");
+      header("Location: /~ddallaga/htdocs/");
   }
 ?>
 
 <link href="studentHome.css" rel="stylesheet">
+
+<script>
+function logOut() {
+	window.location.href = "/~ddallaga/htdocs/";
+}
+</script>
+
+<style>
+.logout{
+
+   position:fixed;
+   right:10px;
+   top:5px;
+}
+</style>
+
+
 </head>
 
 <body>
+<button class="logout" onclick="logOut()">logout</button>
 <div class="info">
   <form class="student-welcome">
     <h1 id="teacherHeader">Welcome 'insert teacher name here'!</h1>
@@ -76,13 +94,13 @@ window.onload = loadPage;
   			<h2>Your Class' Book List</h2>
   		</div>
   		<div class="add-book">
-    		<button type="button" id="addBook">Add Book</button>
+				<button type="button" id="addBook">Add Book</button>
     	</div>
   </form>
 
 <script>
 $("#addBook").click(function() {
-	window.location.href = "http://linux.students.engr.scu.edu/~ddallaga/htdocs/teacherAddClient.php";
+	window.location.href = "/~ddallaga/htdocs/teacherAddClient.php";
 
 });
 </script>

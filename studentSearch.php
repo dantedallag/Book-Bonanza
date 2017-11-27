@@ -21,10 +21,24 @@
 	}
 </script>
 -->
+<script>
+function logOut() {
+	window.location.href = "/~ddallaga/htdocs/";
+}
+</script>
 
+<style>
+.logout{
+
+   position:fixed;
+   right:10px;
+   top:5px;
+}
+</style>
 </head>
 
 <body>
+<button class="logout" onclick="logOut()">logout</button>
 <div class="container">
 	<h2>Enter your Reading Interests</h2>
 	<form>
@@ -120,7 +134,7 @@
 			console.log(data);
 			var url = "studentSearchServer.php";
 			$.post(url,data,function(res) {
-				var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/searchResultsClient.php';
+				var newUrl = '/~ddallaga/htdocs/searchResultsClient.php';
 				console.log(res);
 				window.location.href = newUrl;
 			});

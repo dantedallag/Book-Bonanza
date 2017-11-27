@@ -38,13 +38,28 @@ function loadXMLDoc(studentName) {
 <?php
 session_start();
 if( !isset($_SESSION['credentials']) || $_SESSION['credentials'] == true) {
-        header("Location: http://linux.students.engr.scu.edu/~ddallaga/htdocs/");
+        header("Location: /~ddallaga/htdocs/");
 }
 ?>
 
+<script>
+function logOut() {
+	window.location.href = "/~ddallaga/htdocs/";
+}
+</script>
+
+<style>
+.logout{
+
+   position:fixed;
+   right:10px;
+   top:5px;
+}
+</style>
 </head>
 
 <body>
+<button class="logout" onclick="logOut()">logout</button>
 <div class="info">
   <form class="student-welcome">
     <h2 id = "studentHeader">Welcome 'insert student name here'!</h2>
@@ -52,7 +67,7 @@ if( !isset($_SESSION['credentials']) || $_SESSION['credentials'] == true) {
 </div>
 <form class="buttons">
   <!--CHANGE THIS BACK TO 'studentSearch.html'-->
-  <input type="button" class="btn btn-default" value="Find a New Book" onclick="window.location.href='studentSearch.php'" />
+  <input type="button" class="btn btn-default" value="Find a New Book" onclick="window.location.href='/~ddallaga/htdocs/studentSearch.php'" />
 </form>
 <div id="table"> </div>
 <?php

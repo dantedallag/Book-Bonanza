@@ -52,12 +52,10 @@
                     var data = {'title': title, 'author': author};
                     console.log(data);
                     $.post(url,data,function(res) { 
-                        console.log(res);
                         if(res == 'already recommeded') {
-
-                            $('#recommend" . $count . "').prop('disabled', true);
+                            alert('You have already recommended this book');
+                            return;
                         }
-                        console.log('yay recommended!');
                         var studentName = localStorage.getItem('name');
                         $('#bookTable').empty();
                         loadXMLDoc(studentName);

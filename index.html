@@ -59,7 +59,7 @@ function displayCode() {
 				$.post(url,data,function(res) {
 					var json = $.parseJSON(res);
 					console.log(json.name);
-					var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/teacherHomeClient.php';
+					var newUrl = '/~ddallaga/htdocs/teacherHomeClient.php';
 					localStorage.setItem("name", teacherName);
 					localStorage.setItem("isTeacher", true);
 					window.location.href = newUrl;
@@ -70,7 +70,7 @@ function displayCode() {
 				var data = {"name": studentName};
 				$.post(url,data,function(res) { 
 					console.log(res);
-					var newUrl = "http://linux.students.engr.scu.edu/~ddallaga/htdocs/studentHomeClient.php";
+					var newUrl = "/~ddallaga/htdocs/studentHomeClient.php";
 					localStorage.setItem("name", studentName);
 					localStorage.setItem("isTeacher", false);
 					window.location.href = newUrl;

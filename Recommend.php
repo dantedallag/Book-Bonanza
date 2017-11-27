@@ -19,7 +19,6 @@
     $book_id = mysqli_fetch_array($results);
     $results = mysqli_query($connection, "SELECT recommended FROM chosen WHERE user_id = '" . $user_id['id'] . "' AND book_id = '" . $book_id['id'] . "'");
     $row = mysqli_fetch_array($results);
-    print_r($row);
     if($row['recommended'] == 1) {
         echo "already recommeded";
     } else {

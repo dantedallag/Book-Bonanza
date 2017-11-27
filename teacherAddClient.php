@@ -11,13 +11,27 @@
 <?php 
   session_start();
   if( !isset($_SESSION['credentials']) || $_SESSION['credentials'] == false) {
-      header("Location: http://linux.students.engr.scu.edu/~ddallaga/htdocs/");
+      header("Location: /~ddallaga/htdocs/");
   }
 ?>
+<script>
+function logOut() {
+	window.location.href = "/~ddallaga/htdocs/";
+}
+</script>
 
+<style>
+.logout{
+
+   position:fixed;
+   right:10px;
+   top:5px;
+}
+</style>
 </head>
 
 <body>
+<button class="logout" onclick="logOut()">logout</button>
 <div class="container">
     <h2>Please Enter a New Book</h2> <!--Sanitized, but text box-->
     <form>
@@ -136,7 +150,7 @@
             console.log(data);
             var url = "teacherAddServer.php";
             $.post(url,data,function(res) {
-				var newUrl = 'http://linux.students.engr.scu.edu/~ddallaga/htdocs/teacherHomeClient.php';
+				var newUrl = '/~ddallaga/htdocs/teacherHomeClient.php';
                 console.log(res);
 				window.location.href = newUrl;
             });
