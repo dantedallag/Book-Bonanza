@@ -9,10 +9,10 @@
 <link href="TeacherEditAdd.css" rel="stylesheet">
 
 <?php 
-  session_start();
-  if( !isset($_SESSION['credentials']) || $_SESSION['credentials'] == false) {
-      header("Location: /~ddallaga/htdocs/");
-  }
+  //session_start();
+  //if( !isset($_SESSION['credentials']) || $_SESSION['credentials'] == false) {
+    //  header("Location: /~ddallaga/htdocs/");
+  //}
 ?>
 <script>
 function logOut() {
@@ -38,28 +38,28 @@ function logOut() {
         <div class="form-group1">
             <label for="Title">Title</label>
             <input type="text" onblur="titleFilter()" style="width: 200px" class="form-control" id="Title"/>
-            <script>
+            <!--<script>
                 function titleFilter() {
-                    var x = document.getElementById("Title").value;
+                    var x = document.getElementById("Title").value.replace(/^\s+/, '').replace(/\s+$/, '');;
                     console.log(x);
-                    var Exp = /^[1-9a-z\s]*$/i;
+                    var Exp = " ";///^[1-9a-z\s]*$/i;
                     if(!x.match(Exp))
                         alert("You must enter an actual title.")
                 }
-            </script>
+            </script>-->
         </div>
         <div class="form-group1" style=bl>
             <label for="Author">Author</label>
             <input type="text" onblur="authorFilter()" style="width: 200px" class="form-control" id="Author"/>
-            <script>
+            <!--<script>
                 function authorFilter() {
-                    var x = document.getElementById("Author").value;
+                    var x = document.getElementById("Author").value.replace(/^\s+/, '').replace(/\s+$/, '');;
                     console.log(x);
-                    var Exp = /^[a-z\s]*$/i;
+                    var Exp = " ";///^[1-9a-z\s]*$/i;
                     if(!x.match(Exp))
-                        alert("You must enter an author's name.")
+                        alert("You must enter an actual author.")
                 }
-            </script>
+            </script>-->
         </div>
         <div class="form-group1">
             <label for="ReadingLevel">Reading Level</label>
@@ -75,8 +75,7 @@ function logOut() {
             <div class="col-xs-3 selectContainer">
                 <label for="Popularity">Recommended</label> <!--Popular = >4 recs, Medium = 2-4 recs, Not = 0-1--> 
                 <select class="form-control" id="Popularity">
-                    <option selected='selected' disabled value="Select">Select--</option>
-                    <option value="Recommended">Recommended</option>
+                    <option selected='selected' value="Recommended">Recommended</option>
                     <option value="Not Recommended">Not Recommended</option>
                 </select>
             </div>
@@ -85,8 +84,7 @@ function logOut() {
             <div class="col-xs-3 selectContainer">
                 <label for="Genre">Genre</label>
                 <select class="form-control" id="Genre">
-                    <option selected='selected' disabled value="">Choose Genre</option>
-                    <option value="Historical Fiction">Historical Fiction</option>
+                    <option selected='selected' value="Historical Fiction">Historical Fiction</option>
                     <option value="Children's Literature">Children's Literature</option>
                     <option value="Fantasy">Fantasy</option>
                     <option value="Novel">Novel</option>
@@ -111,26 +109,25 @@ function logOut() {
             <div class="col-xs-3 selectContainer">
                 <label for="Trait1">Protagonist Trait 1</label>
                 <select class="form-control" id="Trait1">
-                    <option selected='selected' disabled value="">Choose First Trait</option>
-                    <option value="Short">African American</option>
-                    <option value="Short">Native American</option>
-                    <option value="Medium">Mexican American</option>
-                    <option value="Long">Scandinavian American</option>
-                    <option value="Medium">Hispanic</option>
-                    <option value="Medium">Chilean</option>
-                    <option value="Long">Pakistani</option>
-                    <option value="Short">Haitian</option>
-                    <option value="Long">Polish</option>
-                    <option value="Short">Persian</option>
-                    <option value="Medium">Afghanistani</option>
-                    <option value="Long">Interracial</option>
-                    <option value="Short">Biracial</option>
-                    <option value="Long">Young</option>
-                    <option value="Medium">Dog</option>
-					<option>Male</option>
-					<option>Female</option>
-					<option>Couple</option>
-					<option>Animal</option>
+                    <option selected='selected' value="Short">African American</option>
+                    <option value="Native American">Native American</option>
+                    <option value="Mexican American">Mexican American</option>
+                    <option value="Scandinavian American">Scandinavian American</option>
+                    <option value="Hispanic">Hispanic</option>
+                    <option value="Chilean">Chilean</option>
+                    <option value="Pakistani">Pakistani</option>
+                    <option value="Haitian">Haitian</option>
+                    <option value="Polish">Polish</option>
+                    <option value="Persian">Persian</option>
+                    <option value="Afghanistani">Afghanistani</option>
+                    <option value="Interracial">Interracial</option>
+                    <option value="Biracial">Biracial</option>
+                    <option value="Young">Young</option>
+                    <option value="Dog">Dog</option>
+					<option value="Male">Male</option>
+					<option value="Female">Female</option>
+					<option value="Dog">Couple</option>
+					<option value="Dog">Animal</option>
                 </select>
             </div>
         </div>
@@ -138,7 +135,7 @@ function logOut() {
             <div class="col-xs-3 selectContainer">
                 <label for="Trait1">Protagonist Trait 2</label> 
                 <select class="form-control" id="Trait2">
-                    <option selected='selected' disabled value="">Choose Second Trait</option>
+                    <option selected='selected' value="">Choose Second Trait</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                     <option value="Couple">Couple</option>
@@ -151,6 +148,14 @@ function logOut() {
         <button type="button" class="btn btn-default" id="submit">Submit</button>
         <script>
         $("#submit").click(function() {
+            var a = document.getElementById("Author").value;
+            var t = document.getElementById("Title").value;
+            var lex = document.getElementById("ReadingLevel").value;
+            var len = document.getElementById("Length").value;
+            if($.trim(a).length == 0 || $.trim(t).length == 0|| $.trim(lex).length == 0 || $.trim(len).length == 0){
+                alert("You must fill in all of the fields.");
+                return;
+            }
             var recommendation;
             if($("#Popularity option:selected").text() == "Recommended") {
                 recommendation = 1;
