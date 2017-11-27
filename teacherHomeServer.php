@@ -22,7 +22,7 @@ function getStudentBooks() {
 }";
 echo "</script>";
 
-	echo "<select id='studentBox' onChange='getStudentBooks()'>";
+	echo "<div align='center'> <select id='studentBox' onChange='getStudentBooks()'>";
 	echo "<option value='All Books'>All Books</option>";
 	if(mysqli_num_rows($result) > 0) {
 		while($row = mysqli_fetch_array($result)) {
@@ -30,6 +30,7 @@ echo "</script>";
 		}
 	}
 	echo "</select>";
+	echo "</div>";
 
 echo "<table class='table table-striped' align='center' id='bookTable'>
 <thead>

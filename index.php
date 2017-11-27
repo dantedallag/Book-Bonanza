@@ -7,7 +7,8 @@
 		$fh = fopen('teacherCode.txt','r');
 		$line = fgets($fh);
 		fclose($fh);
-		if($line == $var) {
+		$newVar = md5($var);
+		if($line == $newVar) {
 			$response = array('name' => 'theName');
 			echo json_encode($response);
 		} 

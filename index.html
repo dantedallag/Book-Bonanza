@@ -51,17 +51,19 @@ function displayCode() {
 		var x = document.getElementById("name").value;
 		var y = x.substring(0, 1);
 		if((x != "") && (y != " ")){
-				if($("#code").prop('disabled') == false) {
+			if($("#code").prop('disabled') == false) {
 				var teacherCode = $("#code").val(); 
 				var teacherName = $("#name").val();
 				var url = "index.php";
 				var data = {"credentials": teacherCode, "name": teacherName};
 				$.post(url,data,function(res) {
+					console.log(res);
 					var json = $.parseJSON(res);
 					console.log(json.name);
 					var newUrl = '/~ddallaga/htdocs/teacherHomeClient.php';
 					localStorage.setItem("name", teacherName);
 					localStorage.setItem("isTeacher", true);
+					$("#teacher").prop('checked', false);
 					window.location.href = newUrl;
 				});
 			} else {
@@ -73,6 +75,7 @@ function displayCode() {
 					var newUrl = "/~ddallaga/htdocs/studentHomeClient.php";
 					localStorage.setItem("name", studentName);
 					localStorage.setItem("isTeacher", false);
+					$("#teacher").prop('checked', false);
 					window.location.href = newUrl;
 				});
 			}
