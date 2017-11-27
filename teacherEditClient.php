@@ -45,7 +45,7 @@ function logOut() {
         </div>
         <div class="form-group1">
             <label for="ReadingLevel">Reading Level</label>
-            <input type="text" style="width: 200px" class="form-control" id="ReadingLevel"/>
+            <input type="number" style="width: 200px" class="form-control" id="ReadingLevel"/>
         </div>
 		<div class="form-group1">
 			<label for="Length">Length</label>
