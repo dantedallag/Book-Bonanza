@@ -8,24 +8,25 @@
     if(!$connection) {
         echo "Error connecting";
     }
-    echo "<table class='table table-striped' align='center' id='bookTable'>
-    <thead>
-    <tr>
-    <th>Book Title</th>
-    <th>Author</th>
-    <th>Lexile Level</th>
-    <th>Length</th>
-    <th>Genre</th>
-    <th>Protagonist Trait 1</th>
-    <th>Protagonist Trait 2</th>
-    <th>Recommendations </th>
-    <th>Recommend</th>
-    </tr>
-    </thead>
-    <tbody>";
+    
     $result = mysqli_query($connection, "SELECT title,author,lexile,page_length,genre,trait1,trait2,recommendations FROM books INNER JOIN chosen ON chosen.book_id = books.id INNER JOIN users ON ('". $studentName . "' = users.person_name AND users.id = chosen.user_id)"); 
     $count = 0;
     if(mysqli_num_rows($result) > 0) {
+		echo "<table class='table table-striped' align='center' id='bookTable'>
+		<thead>
+		<tr>
+		<th>Book Title</th>
+		<th>Author</th>
+		<th>Lexile Level</th>
+		<th>Length</th>
+		<th>Genre</th>
+		<th>Protagonist Trait 1</th>
+		<th>Protagonist Trait 2</th>
+		<th>Recommendations </th>
+		<th>Recommend</th>
+		</tr>
+		</thead>
+		<tbody>";
         while($row = mysqli_fetch_array($result)) {
                 echo "<tr>";
                 echo "<td id='title" . $count . "'>" . $row['title'] . "</td>";
@@ -64,7 +65,7 @@
             $count = $count + 1;
         }
     } else {
-        echo "You have not chosen any books yet";
+        echo "<p align='center'>You have not chosen any books yet!</p>";
     }
     mysqli_close($connection);
     echo "</tbody> </table>";

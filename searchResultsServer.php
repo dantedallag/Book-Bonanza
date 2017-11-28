@@ -97,7 +97,6 @@
 		echo "<td>".$resultArray[$i]['trait2']."</td>";
 		echo "<td>".$resultArray[$i]['recommendations']."</td>";
 		echo "<td style='display:none;' id='bID".$i."'>".$resultArray[$i]['id']."</td>";
-		echo $resultArray[$i]['score']." ";
 		echo "</tr>";
 	}
 
