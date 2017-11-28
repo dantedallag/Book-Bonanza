@@ -63,8 +63,9 @@ function logOut() {
 			var url = "searchResultsServerSubmit.php";
 			$.post(url, data, function(res) {
 				var newUrl = '/~ddallaga/htdocs/studentHomeClient.php';
+				console.log("hello");
 				console.log(res);
-				window.location.href = newUrl;
+				//window.location.href = newUrl;
 			});
 		});
 	</script>

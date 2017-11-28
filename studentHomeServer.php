@@ -2,11 +2,7 @@
     error_reporting(0);
     session_start();
     $studentName = $_SESSION['name'];
-    $host = "dbserver.engr.scu.edu";
-    $user = "ddallaga";
-    $password = "00001033223";
-    $database = "sdb_ddallaga";
-    $port = 3306;
+    include "../credentials.php";
     $connection = mysqli_connect($host, $user, $password, $database)
         or die("Error: " . mysqli_error($connection));
     if(!$connection) {
@@ -32,7 +28,6 @@
     if(mysqli_num_rows($result) > 0) {
         while($row = mysqli_fetch_array($result)) {
                 echo "<tr>";
-              
                 echo "<td id='title" . $count . "'>" . $row['title'] . "</td>";
                 echo "<td id='author" . $count . "'>" . $row['author'] . "</td>";
                 echo "<td>" . $row['lexile'] . "</td>";

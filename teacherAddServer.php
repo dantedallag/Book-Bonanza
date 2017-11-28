@@ -7,11 +7,7 @@
     $genre = $_POST['genre'];
     $trait1 = $_POST['trait1'];
     $trait2 = $_POST['trait2'];
-    $host = "dbserver.engr.scu.edu";
-    $user = "ddallaga";
-    $password = "00001033223";
-    $database = "sdb_ddallaga";
-    $port = 3306;
+    include "../credentials.php";
     $connection = mysqli_connect($host, $user, $password, $database)
         or die("Error: " . mysqli_error($connection));
     if(!$connection) {

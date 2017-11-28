@@ -16,11 +16,7 @@
 		$_SESSION['credentials'] = false;
 		$personName = $_POST['name'];
 		$_SESSION['name'] = $personName;
-		$host = "dbserver.engr.scu.edu";
-		$user = "ddallaga";
-		$password = "00001033223";
-		$database = "sdb_ddallaga";
-		$port = 3306;
+		include "../credentials.php";
 		$connection = mysqli_connect($host, $user, $password, $database)
 			or die("Error: " . mysqli_error($connection));
 		if(!$connection) {
