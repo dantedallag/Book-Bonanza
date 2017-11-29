@@ -32,14 +32,3 @@ CREATE TABLE chosen(
     PRIMARY KEY(user_id,book_id) 
 );
 
--- --Teacher Page
--- SELECT books.title, books.author, books.lexile, books.page_length, books.genre, books.trait1, books.trait2, books.recommended 
---     FROM books;
-
--- --Teacher Add
--- INSERT INTO books VALUE();
-
--- --Student Page
--- SELECT books.title, books.author, books.lexile, books.page_length, books.genre, books.trait1, books.trait2, books.recommended
---     FROM books,chosen,users WHERE (chosen.user_id = "person" AND books.id = chosen.book_id); 
-

@@ -19,7 +19,6 @@ function loadXMLDoc(studentName) {
   };
   var data = new FormData();
   data.append('studentName', studentName);
-  //var data = JSON.stringify({ "studentName" : studentName});
   var url = "studentHomeServer.php";
   xhttp.open("POST", url, true);
   xhttp.send(data);
@@ -30,21 +29,20 @@ function loadXMLDoc(studentName) {
   function loadName() {
     var studentName = localStorage.getItem("name");
     document.getElementById("studentHeader").innerHTML = "Welcome " + studentName + "!";
-    //loadXMLDoc(studentName);
   }
   window.onload = loadName;
 </script>
 
 <?php
-//session_start();
-//if( !isset($_SESSION['credentials']) || $_SESSION['credentials'] == true) {
- //       header("Location: /~ddallaga/htdocs/");
-//}
+session_start();
+if( !isset($_SESSION['credentials']) || $_SESSION['credentials'] == true) {
+        header("Location: index.html");
+}
 ?>
 
 <script>
 function logOut() {
-	window.location.href = "/~ddallaga/htdocs/";
+	window.location.href = "index.html";
 }
 </script>
 
@@ -66,8 +64,7 @@ function logOut() {
   </form>
 </div>
 <form class="buttons">
-  <!--CHANGE THIS BACK TO 'studentSearch.html'-->
-  <input type="button" class="btn btn-default" value="Find a New Book" onclick="window.location.href='/~ddallaga/htdocs/studentSearch.php'" />
+  <input type="button" class="btn btn-default" value="Find a New Book" onclick="window.location.href='studentSearch.php'" />
 </form>
 <div id="table"  style="color:black; background-color:#FAEAE0" align="center"> </div>
 <?php

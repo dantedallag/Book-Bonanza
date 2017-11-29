@@ -9,13 +9,12 @@
 
 <link href="login.css" rel="stylesheet">
 <script type="text/javascript">
+//is teacher checkbox functionality
 function displayCode() {
 	console.log($("#code").prop('disabled'));
 	if($("#code").prop('disabled') == true) {
-		console.log("It was disabled");
 		$("#code").prop('disabled', false);
 	} else {
-		console.log("was not disabled");
 		$("#code").prop('disabled', true);
 	}
 }
@@ -48,32 +47,32 @@ function displayCode() {
 	</form>
 
 	<script>
+	//Function that is called when user submits credentials
 	$("#submit").click(function() {
 		var x = document.getElementById("name").value;
 		var y = x.substring(0, 1);
 		if((x != "") && (y != " ")){
 			if($("#code").prop('disabled') == false) {
+				//this runs if the user is a teacher
 				var teacherCode = $("#code").val(); 
 				var teacherName = $("#name").val();
 				var url = "index.php";
 				var data = {"credentials": teacherCode, "name": teacherName};
 				$.post(url,data,function(res) {
-					console.log(res);
 					var json = $.parseJSON(res);
-					console.log(json.name);
-					var newUrl = '/~ddallaga/htdocs/teacherHomeClient.php';
+					var newUrl = 'teacherHomeClient.php';
 					localStorage.setItem("name", teacherName);
 					localStorage.setItem("isTeacher", true);
 					$("#teacher").prop('checked', false);
 					window.location.href = newUrl;
 				});
 			} else {
+				//this runs if the user is a student
 				var studentName = $("#name").val();
 				var url = "index.php";
 				var data = {"name": studentName};
 				$.post(url,data,function(res) { 
-					console.log(res);
-					var newUrl = "/~ddallaga/htdocs/studentHomeClient.php";
+					var newUrl = "studentHomeClient.php";
 					localStorage.setItem("name", studentName);
 					localStorage.setItem("isTeacher", false);
 					$("#teacher").prop('checked', false);

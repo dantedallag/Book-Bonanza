@@ -2,11 +2,7 @@
     error_reporting(0);
     session_start();
     $studentName = $_SESSION['name'];
-    $host = "dbserver.engr.scu.edu";
-    $user = "ddallaga";
-    $password = "00001033223";
-    $database = "sdb_ddallaga";
-    $port = 3306;
+    include "credentials.php";
     $connection = mysqli_connect($host, $user, $password, $database)
         or die("Error: " . mysqli_error($connection));
     if(!$connection) {
@@ -43,14 +39,12 @@
                 echo "<td>"  . $row['recommendations'] . "</td>";
                 echo "<td><button type='submit' class='btn btn-default' id='recommend" . $count . "'align='center;'>Recommend</button></td>";
                 echo "<script>
-                console.log('hello');
+                //onclick recommend action unique for each boko entry
                 $(document).on('click', '#recommend" . $count . "', function() {
                     var title = $('#title" . $count . "').text();
                     var author = $('#author" . $count . "').text();
-                    console.log('hey');
                     var url = 'Recommend.php';
                     var data = {'title': title, 'author': author};
-                    console.log(data);
                     $.post(url,data,function(res) { 
                         if(res == 'already recommeded') {
                             alert('You have already recommended this book');
@@ -63,7 +57,6 @@
                 });
             </script>";
             echo "<script>
-            console.log('wowowowo');
             </script>";
             echo "</tr>";
             $count = $count + 1;
