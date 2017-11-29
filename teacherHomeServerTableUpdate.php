@@ -1,5 +1,5 @@
 <?php
-include "../credentials.php";
+include "credentials.php";
 $connection = mysqli_connect($host, $user, $password, $database)
     or die("Error: " . mysqli_error($connection));
 if(!$connection) {

@@ -6,7 +6,7 @@
 	$genre = $_SESSION['genre'];
 	$trait1 = $_SESSION['trait1'];
 	$trait2 = $_SESSION['trait2'];
-	include "../credentials.php";
+	include "credentials.php";
 	$connection = mysqli_connect($host, $user, $password, $database)
 		or die("Error: " . mysqli_error($connection));
 	if(!$connection) {
