@@ -11,12 +11,12 @@
 <?php 
     session_start();
     if( !isset($_SESSION['credentials']) || $_SESSION['credentials'] == false) {
-       header("Location: /htdocs/");
+       header("Location: index.html");
     }
 ?>
 <script>
 function logOut() {
-	window.location.href = "/htdocs/";
+	window.location.href = "/";
 }
 </script>
 
@@ -140,9 +140,9 @@ function logOut() {
             var trait1 = $("#Trait1 option:selected").text();
             var trait2 = $("#Trait2 option:selected").text();
             var data = {"oldTitle": oldTitle, "oldAuthor": oldAuthor,"title": title, "author": author, "readingLevel": readingLevel, "length": length, "genre": genre, "trait1": trait1, "trait2": trait2};
-            var url = "/htdocs/teacherEdit.php";
+            var url = "teacherEdit.php";
             $.post(url,data,function(res) {
-				var newUrl = '/htdocs/teacherHomeClient.php';
+				var newUrl = 'teacherHomeClient.php';
 				window.location.href = newUrl;
             });
         });

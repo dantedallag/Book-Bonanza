@@ -59,7 +59,7 @@ function displayCode() {
 				var data = {"credentials": teacherCode, "name": teacherName};
 				$.post(url,data,function(res) {
 					var json = $.parseJSON(res);
-					var newUrl = '/htdocs/teacherHomeClient.php';
+					var newUrl = 'teacherHomeClient.php';
 					localStorage.setItem("name", teacherName);
 					localStorage.setItem("isTeacher", true);
 					$("#teacher").prop('checked', false);
@@ -71,7 +71,7 @@ function displayCode() {
 				var url = "index.php";
 				var data = {"name": studentName};
 				$.post(url,data,function(res) { 
-					var newUrl = "/htdocs/studentHomeClient.php";
+					var newUrl = "studentHomeClient.php";
 					localStorage.setItem("name", studentName);
 					localStorage.setItem("isTeacher", false);
 					$("#teacher").prop('checked', false);

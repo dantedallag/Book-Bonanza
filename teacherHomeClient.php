@@ -19,7 +19,7 @@ function loadXMLDocStudent(studentName) {
 	};
 	var data = new FormData();
 	data.append('studentName', studentName);
-  var url = "/htdocs/teacherHomeServerTableUpdate.php";
+  var url = "teacherHomeServerTableUpdate.php";
   xhttp.open("POST", url, true);
   xhttp.send(data);
 }
@@ -35,7 +35,7 @@ function loadXMLDocDelete(title,author) {
 	var data = new FormData();
 	data.append('title', title);
 	data.append('author', author)
-  var url = "/htdocs/teacherHomeServerTableUpdate.php";
+  var url = "teacherHomeServerTableUpdate.php";
   xhttp.open("POST", url, true);
   xhttp.send(data);
 }
@@ -45,7 +45,7 @@ function loadXMLDocDelete(title,author) {
 //initial code running
 function loadPage() {
 	if(!localStorage.getItem("isTeacher")) {
-		var url = "/htdocs/";
+		var url = "index.html";
 		window.location.href = url;
 	} else {
 		var teacherName = localStorage.getItem("name");
@@ -58,15 +58,15 @@ window.onload = loadPage;
 <?php 
   session_start();
   if( !isset($_SESSION['credentials']) || $_SESSION['credentials'] == false) {
-      header("Location: /htdocs/");
+      header("Location: index.html");
   }
 ?>
 
-<link href="/htdocs/studentHome.css" rel="stylesheet">
+<link href="studentHome.css" rel="stylesheet">
 
 <script>
 function logOut() {
-	window.location.href = "/htdocs/";
+	window.location.href = "index.html";
 }
 </script>
 
@@ -106,13 +106,13 @@ function logOut() {
 
 <script>
 $("#addBook").click(function() {
-	window.location.href = "/htdocs/teacherAddClient.php";
+	window.location.href = "teacherAddClient.php";
 
 });
 </script>
 </div>
 <?php 
-include '/htdocs/teacherHomeServer.php';
+include 'teacherHomeServer.php';
 ?>
 </body>
 </html>

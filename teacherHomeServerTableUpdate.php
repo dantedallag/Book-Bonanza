@@ -1,6 +1,6 @@
 <?php
 //update table
-include "/htdocs/credentials.php";
+include "credentials.php";
 $connection = mysqli_connect($host, $user, $password, $database)
     or die("Error: " . mysqli_error($connection));
 if(!$connection) {
@@ -45,7 +45,7 @@ if(mysqli_num_rows($result) > 0) {
                 var author = $('#author" .$count . "').text();
                 localStorage.setItem('title', title);
                 localStorage.setItem('author', author);
-                var newUrl = '/htdocs/TeacherEdit.html';
+                var newUrl = 'TeacherEdit.html';
                 window.location.href = newUrl;
             });
             </script>";

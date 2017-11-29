@@ -5,7 +5,7 @@
 		$var = $_POST['credentials'];
 		$_SESSION['credentials'] = true;
 		$_SESSION['name'] = $_POST['name'];
-		$fh = fopen('/htdocs/teacherCode.txt','r');
+		$fh = fopen('teacherCode.txt','r');
 		$line = fgets($fh);
 		fclose($fh);
 		$newVar = md5($var);
@@ -19,7 +19,7 @@
 		$_SESSION['credentials'] = false;
 		$personName = $_POST['name'];
 		$_SESSION['name'] = $personName;
-		include "/htdocs/credentials.php";
+		include "credentials.php";
 		$connection = mysqli_connect($host, $user, $password, $database)
 			or die("Error: " . mysqli_error($connection));
 		if (!$connection) {

@@ -2,7 +2,7 @@
     error_reporting(0);
     session_start();
     $studentName = $_SESSION['name'];
-    include "/htdocs/credentials.php";
+    include "credentials.php";
     $connection = mysqli_connect($host, $user, $password, $database)
         or die("Error: " . mysqli_error($connection));
     if(!$connection) {
@@ -43,7 +43,7 @@
                 $(document).on('click', '#recommend" . $count . "', function() {
                     var title = $('#title" . $count . "').text();
                     var author = $('#author" . $count . "').text();
-                    var url = '/htdocs/Recommend.php';
+                    var url = 'Recommend.php';
                     var data = {'title': title, 'author': author};
                     $.post(url,data,function(res) { 
                         if(res == 'already recommeded') {

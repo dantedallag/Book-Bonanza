@@ -19,7 +19,7 @@ function loadXMLDoc(studentName) {
   };
   var data = new FormData();
   data.append('studentName', studentName);
-  var url = "/htdocs/studentHomeServer.php";
+  var url = "studentHomeServer.php";
   xhttp.open("POST", url, true);
   xhttp.send(data);
 }
@@ -36,13 +36,13 @@ function loadXMLDoc(studentName) {
 <?php
 session_start();
 if( !isset($_SESSION['credentials']) || $_SESSION['credentials'] == true) {
-        header("Location: /htdocs/");
+        header("Location: index.html");
 }
 ?>
 
 <script>
 function logOut() {
-	window.location.href = "/htdocs/";
+	window.location.href = "index.html";
 }
 </script>
 
@@ -64,11 +64,11 @@ function logOut() {
   </form>
 </div>
 <form class="buttons">
-  <input type="button" class="btn btn-default" value="Find a New Book" onclick="window.location.href='/htdocs/studentSearch.php'" />
+  <input type="button" class="btn btn-default" value="Find a New Book" onclick="window.location.href='studentSearch.php'" />
 </form>
 <div id="table"> </div>
 <?php
-require '/htdocs/studentHomeServer.php';
+require 'studentHomeServer.php';
 ?>
 </body>
 </html>

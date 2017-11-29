@@ -12,7 +12,7 @@
 
 <script>
 function logOut() {
-	window.location.href = "/~ddallaga/htdocs/";
+	window.location.href = "index.html";
 }
 </script>
 
@@ -127,7 +127,7 @@ function logOut() {
 			var url = "studentSearchServer.php";
 			//POST here just adds the variables to SESSION
 			$.post(url,data,function(res) {
-				var newUrl = '/htdocs/searchResultsClient.php';
+				var newUrl = 'searchResultsClient.php';
 				window.location.href = newUrl;
 			});
 		});

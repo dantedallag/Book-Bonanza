@@ -8,7 +8,7 @@
     $genre = $_POST['genre'];
     $trait1 = $_POST['trait1'];
     $trait2 = $_POST['trait2'];
-    include "/htdocs/credentials.php";
+    include "credentials.php";
     $connection = mysqli_connect($host, $user, $password, $database)
         or die("Error: " . mysqli_error($connection));
     if(!$connection) {

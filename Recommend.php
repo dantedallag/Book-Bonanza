@@ -4,7 +4,7 @@
     $title = $_POST['title'];
     $author = $_POST['author'];
     $name = $_SESSION['name'];
-    include "/htdocs/credentials.php";
+    include "credentials.php";
     $connection = mysqli_connect($host, $user, $password, $database)
         or die("Error: " . mysqli_error($connection));
     if(!$connection) {
