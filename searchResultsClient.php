@@ -52,9 +52,6 @@ function logOut() {
 				}
 			}
 			if(ids.length == 0)
-<<<<<<< Updated upstream
-				window.location.href = '/~ddallaga/htdocs/studentHomeClient.php';
-=======
 				window.location.href = '/htdocs/studentHomeClient.php';
 			console.log(ids);
 >>>>>>> Stashed changes
@@ -62,9 +59,6 @@ function logOut() {
 			var data = {'idsString' : idsString};
 			var url = "searchResultsServerSubmit.php";
 			$.post(url, data, function(res) {
-<<<<<<< Updated upstream
-				var newUrl = '/~ddallaga/htdocs/studentHomeClient.php';
-=======
 				var newUrl = '/htdocs/studentHomeClient.php';
 				console.log("hello");
 				console.log(res);

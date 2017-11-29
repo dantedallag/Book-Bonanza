@@ -127,11 +127,7 @@ function logOut() {
 			var url = "studentSearchServer.php";
 			//POST here just adds the variables to SESSION
 			$.post(url,data,function(res) {
-<<<<<<< Updated upstream
-				var newUrl = '/~ddallaga/htdocs/searchResultsClient.php';
-=======
 				var newUrl = '/htdocs/searchResultsClient.php';
->>>>>>> Stashed changes
 				window.location.href = newUrl;
 			});
 		});
