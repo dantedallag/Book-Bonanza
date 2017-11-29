@@ -1,4 +1,5 @@
 <?php
+    //adds book to database
     $title = $_POST['title'];
     $author = $_POST['author'];
     $readingLevel =$_POST['readingLevel'];
@@ -7,7 +8,7 @@
     $genre = $_POST['genre'];
     $trait1 = $_POST['trait1'];
     $trait2 = $_POST['trait2'];
-    include "credentials.php";
+    include "/htdocs/credentials.php";
     $connection = mysqli_connect($host, $user, $password, $database)
         or die("Error: " . mysqli_error($connection));
     if(!$connection) {
@@ -17,5 +18,4 @@
     VALUES('".$title."','".$author."','".$readingLevel."', '" .$recommendations. "','".$length."','".$genre."','".$trait1."','".$trait2."')";
     $result = mysqli_query($connection, $querry);
     mysqli_close($connection);
-    echo $querry;
 ?>

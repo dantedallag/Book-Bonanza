@@ -8,17 +8,18 @@
 
 <link href="TeacherEditAdd.css" rel="stylesheet">
 
-<?php 
-  //session_start();
-  //if( !isset($_SESSION['credentials']) || $_SESSION['credentials'] == false) {
-    //  header("Location: /~ddallaga/htdocs/");
-  //}
-?>
 <script>
 function logOut() {
-	window.location.href = "/~ddallaga/htdocs/";
+	window.location.href = "/htdocs/";
 }
 </script>
+
+<?php 
+    session_start();
+    if( !isset($_SESSION['credentials']) || $_SESSION['credentials'] == false) {
+       header("Location: /htdocs/");
+    }
+?>
 
 <style>
 .logout{
@@ -38,28 +39,10 @@ function logOut() {
         <div class="form-group1">
             <label for="Title">Title</label>
             <input type="text" onblur="titleFilter()" style="width: 200px" class="form-control" id="Title"/>
-            <!--<script>
-                function titleFilter() {
-                    var x = document.getElementById("Title").value.replace(/^\s+/, '').replace(/\s+$/, '');;
-                    console.log(x);
-                    var Exp = " ";///^[1-9a-z\s]*$/i;
-                    if(!x.match(Exp))
-                        alert("You must enter an actual title.")
-                }
-            </script>-->
         </div>
         <div class="form-group1" style=bl>
             <label for="Author">Author</label>
             <input type="text" onblur="authorFilter()" style="width: 200px" class="form-control" id="Author"/>
-            <!--<script>
-                function authorFilter() {
-                    var x = document.getElementById("Author").value.replace(/^\s+/, '').replace(/\s+$/, '');;
-                    console.log(x);
-                    var Exp = " ";///^[1-9a-z\s]*$/i;
-                    if(!x.match(Exp))
-                        alert("You must enter an actual author.")
-                }
-            </script>-->
         </div>
         <div class="form-group1">
             <label for="ReadingLevel">Reading Level</label>
@@ -73,7 +56,7 @@ function logOut() {
     <form style="padding-left: 145px; width=3000px;">
         <div class="form-group21">
             <div class="col-xs-3 selectContainer">
-                <label for="Popularity">Recommended</label> <!--Popular = >4 recs, Medium = 2-4 recs, Not = 0-1--> 
+                <label for="Popularity">Recommended</label>
                 <select class="form-control" id="Popularity">
                     <option selected='selected' value="Recommended">Recommended</option>
                     <option value="Not Recommended">Not Recommended</option>
@@ -147,6 +130,7 @@ function logOut() {
     <form>
         <button type="button" class="btn btn-default" id="submit">Submit</button>
         <script>
+        //takes inserted new book info and posts it to a php script that adds it to a database
         $("#submit").click(function() {
             var a = document.getElementById("Author").value;
             var t = document.getElementById("Title").value;
@@ -157,6 +141,7 @@ function logOut() {
                 return;
             }
             var recommendation;
+            //checks to see if the book should start with one recommendation from teacher
             if($("#Popularity option:selected").text() == "Recommended") {
                 recommendation = 1;
             } else {
@@ -170,11 +155,9 @@ function logOut() {
             var trait1 = $("#Trait1 option:selected").text();
             var trait2 = $("#Trait2 option:selected").text();
             var data = {"recommendations": recommendation, "title": title, "author": author, "readingLevel": readingLevel, "length": length, "genre": genre, "trait1": trait1, "trait2": trait2};
-            console.log(data);
-            var url = "teacherAddServer.php";
+            var url = "/htdocs/teacherAddServer.php";
             $.post(url,data,function(res) {
-				var newUrl = '/~ddallaga/htdocs/teacherHomeClient.php';
-                console.log(res);
+				var newUrl = '/htdocs/teacherHomeClient.php';
 				window.location.href = newUrl;
             });
         });

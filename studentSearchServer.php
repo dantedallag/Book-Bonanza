@@ -1,6 +1,7 @@
 <?php
 	//Just logs session variables 
 	session_start();
+	//gather all student search information into session variables
 	$_SESSION['author'] = $_POST['author'];
 	$_SESSION['lexile'] = $_POST['lexile'];
 	$_SESSION['length'] = $_POST['length'];

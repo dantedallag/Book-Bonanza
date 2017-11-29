@@ -1,5 +1,6 @@
 <?php
-include "credentials.php";
+//update table
+include "/htdocs/credentials.php";
 $connection = mysqli_connect($host, $user, $password, $database)
     or die("Error: " . mysqli_error($connection));
 if(!$connection) {
@@ -39,21 +40,21 @@ if(mysqli_num_rows($result) > 0) {
             echo "<td><button type='submit' class='btn btn-default' id='edit" . $count . "' align='center;'>Edit</button>";
             echo "<script>
             $(document).on('click','#edit" . $count . "', function()  {
+                //edit button functionality
                 var title = $('#title" . $count . "').text();
                 var author = $('#author" .$count . "').text();
                 localStorage.setItem('title', title);
                 localStorage.setItem('author', author);
-                var newUrl = '/~ddallaga/htdocs/TeacherEdit.html';
+                var newUrl = '/htdocs/TeacherEdit.html';
                 window.location.href = newUrl;
             });
             </script>";
             echo "<td><button type='submit' class='btn btn-default' id='delete" . $count . "' align='center;'>Delete</button></td>";
             echo "<script>
+            //delete button functionality
             $(document).on('click', '#delete," . $count . "', function() {
                 var title = $('#title" . $count . "').text();
                 var author = $('#author" . $count . "').text();
-                console.log(author);
-                console.log(title);
                 loadXMLDocDelete(title,author);
             });
 			</script>";

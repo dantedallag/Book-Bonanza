@@ -7,9 +7,9 @@
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- Student choice updates --> 
-<!--<script src="TeacherHome.js"></script> -->
 
 <script>
+//table filter/re-render for individual student
 function loadXMLDocStudent(studentName) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -19,15 +19,14 @@ function loadXMLDocStudent(studentName) {
 	};
 	var data = new FormData();
 	data.append('studentName', studentName);
-  //var data = JSON.stringify({ "studentName" : studentName});
-  var url = "teacherHomeServerTableUpdate.php";
+  var url = "/htdocs/teacherHomeServerTableUpdate.php";
   xhttp.open("POST", url, true);
   xhttp.send(data);
 }
 
+//delete element/re-render table
 function loadXMLDocDelete(title,author) {
 	var xhttp = new XMLHttpRequest();
-	console.log("deleting");
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("tableBody").innerHTML = this.responseText;
@@ -36,21 +35,21 @@ function loadXMLDocDelete(title,author) {
 	var data = new FormData();
 	data.append('title', title);
 	data.append('author', author)
-  var url = "teacherHomeServerTableUpdate.php";
+  var url = "/htdocs/teacherHomeServerTableUpdate.php";
   xhttp.open("POST", url, true);
   xhttp.send(data);
 }
 </script>
 
 <script>
+//initial code running
 function loadPage() {
 	if(!localStorage.getItem("isTeacher")) {
-		var url = "http://linux.students.engr.scu.edu/~ddallaga/htdocs";
+		var url = "/htdocs/";
 		window.location.href = url;
 	} else {
 		var teacherName = localStorage.getItem("name");
 		document.getElementById("teacherHeader").innerHTML = "Welcome Teacher " + teacherName + "!";
-		console.log(teacherName);
 	}
 }
 window.onload = loadPage;
@@ -59,15 +58,15 @@ window.onload = loadPage;
 <?php 
   session_start();
   if( !isset($_SESSION['credentials']) || $_SESSION['credentials'] == false) {
-      header("Location: /~ddallaga/htdocs/");
+      header("Location: /htdocs/");
   }
 ?>
 
-<link href="studentHome.css" rel="stylesheet">
+<link href="/htdocs/studentHome.css" rel="stylesheet">
 
 <script>
 function logOut() {
-	window.location.href = "/~ddallaga/htdocs/";
+	window.location.href = "/htdocs/";
 }
 </script>
 
@@ -107,13 +106,13 @@ function logOut() {
 
 <script>
 $("#addBook").click(function() {
-	window.location.href = "/~ddallaga/htdocs/teacherAddClient.php";
+	window.location.href = "/htdocs/teacherAddClient.php";
 
 });
 </script>
 </div>
 <?php 
-include 'teacherHomeServer.php';
+include '/htdocs/teacherHomeServer.php';
 ?>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-	include "credentials.php";
+	include "/htdocs/credentials.php";
 	$connection = mysqli_connect($host, $user, $password, $database)
 		or die("Error: " . mysqli_error($connection));
 	if(!$connection) {
@@ -10,11 +10,11 @@
 
 echo "<script>";
 echo "
+//calls function to filter/re-render table for individual student
 function getStudentBooks() {
 	var name = $('#studentBox :selected').text();
 	$('#tableBody').empty();
 	loadXMLDocStudent(name);
-	console.log(name);
 }";
 echo "</script>";
 
@@ -61,25 +61,23 @@ if(mysqli_num_rows($result) > 0) {
 			echo "<td>" . $row['recommendations'] . "</td>";
 			echo "<td><button type='submit' class='btn btn-default' id='edit" . $count . "' align='center;'>Edit</button></td>";
 			echo "<script>
-
-
+			//edit button functionality
 			$(document).on('click','#edit" . $count . "', function()  {
 					var title = $('#title" . $count . "').text();
 					var author = $('#author" .$count . "').text();
 					localStorage.setItem('title', title);
 					localStorage.setItem('author', author);
-					var newUrl = '/~ddallaga/htdocs/teacherEditClient.php';
+					var newUrl = '/htdocs/teacherEditClient.php';
 					window.location.href = newUrl;
 				});
 			</script>";
-
+			
 			echo "<td><button type='submit' class='btn btn-default' id='delete" . $count . "' align='center;'>Delete</button></td>";
 			echo "<script>
+			//delete button functionality
 			$(document).on('click', '#delete" . $count . "', function() {
 				var title = $('#title" . $count . "').text();
 				var author = $('#author" . $count . "').text();
-				console.log(author);
-				console.log(title);
 				loadXMLDocDelete(title,author);
 			}); 
 			</script>";

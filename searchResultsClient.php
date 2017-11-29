@@ -36,7 +36,7 @@ function logOut() {
   </form>
 </div>
 <?php
-	include 'searchResultsServer.php';
+	include '/htdocs/searchResultsServer.php';
 ?>
 <form class="buttons">
     <input type="button" id="submit" class="btn btn-default" value="Submit Choices!"/>
@@ -52,12 +52,24 @@ function logOut() {
 				}
 			}
 			if(ids.length == 0)
+<<<<<<< Updated upstream
 				window.location.href = '/~ddallaga/htdocs/studentHomeClient.php';
+=======
+				window.location.href = '/htdocs/studentHomeClient.php';
+			console.log(ids);
+>>>>>>> Stashed changes
 			var idsString = JSON.stringify(ids);
 			var data = {'idsString' : idsString};
 			var url = "searchResultsServerSubmit.php";
 			$.post(url, data, function(res) {
+<<<<<<< Updated upstream
 				var newUrl = '/~ddallaga/htdocs/studentHomeClient.php';
+=======
+				var newUrl = '/htdocs/studentHomeClient.php';
+				console.log("hello");
+				console.log(res);
+				//window.location.href = newUrl;
+>>>>>>> Stashed changes
 			});
 		});
 	</script>

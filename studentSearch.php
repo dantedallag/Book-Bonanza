@@ -105,6 +105,7 @@ function logOut() {
 	</form>
         <button type="button" class="btn btn-default" id="submit">Submit Selections</button>
 		<script>
+		//gather information for book search
 		$("#submit").click( function() {
             var lex = document.getElementById("sel2").value;
 			//A bit of entry sanitization, this is the only one that matters though
@@ -126,7 +127,11 @@ function logOut() {
 			var url = "studentSearchServer.php";
 			//POST here just adds the variables to SESSION
 			$.post(url,data,function(res) {
+<<<<<<< Updated upstream
 				var newUrl = '/~ddallaga/htdocs/searchResultsClient.php';
+=======
+				var newUrl = '/htdocs/searchResultsClient.php';
+>>>>>>> Stashed changes
 				window.location.href = newUrl;
 			});
 		});

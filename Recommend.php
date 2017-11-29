@@ -1,9 +1,10 @@
 <?php
     session_start();
+    //Adds recommendations to a book if student has not already recommended it
     $title = $_POST['title'];
     $author = $_POST['author'];
     $name = $_SESSION['name'];
-    include "credentials.php";
+    include "/htdocs/credentials.php";
     $connection = mysqli_connect($host, $user, $password, $database)
         or die("Error: " . mysqli_error($connection));
     if(!$connection) {
@@ -15,6 +16,7 @@
     $book_id = mysqli_fetch_array($results);
     $results = mysqli_query($connection, "SELECT recommended FROM chosen WHERE user_id = '" . $user_id['id'] . "' AND book_id = '" . $book_id['id'] . "'");
     $row = mysqli_fetch_array($results);
+    //student has already recommended book
     if($row['recommended'] == 1) {
         echo "already recommeded";
     } else {
