@@ -1,13 +1,13 @@
 body {
-  padding-top: 30px;
+  padding-top: 100px;
   padding-bottom: 40px;
-  padding-left: 125px;
-  padding-right: 300px;
+  padding-left: 150px;
+  padding-right: 100px;
   background-color: #eee;
 }
 
 form { 
-  width: 700px; 
+  width: 1000px; 
   padding-left: 0px;
   margin: 0px;
   display: inline-block;
@@ -16,35 +16,40 @@ form {
 
 .form-group1{
   padding-top: 20px;
-  padding-left: 10px;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
   display: inline-block;
 }
 
-.form-group21, .form-group22, .form-group23{
+.form-group21{
   padding-left: 100px;
   display: inline;
   text-align: center;
-  width: 2000px;
+  width: 3000px;
+}
+
+.form-group22, .form-group23{
+  padding-left: 100px;
+  display: inline;
+  text-align: center;
+  width: 1000px;
 }
 
 .form-group31, .form-group32{
   display: inline;
-  width: 1200px;
+  width: 1000px;
 }
 
 
 .selectContainer{
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
   display: inline;
   width: 200px;
 }
 
 .container{
 	max-width: 1000px;
-  padding-left: 300px;
+  padding-left: 150px;
   margin: 0 auto;
   text-align: center;
-  height: 550px;
 }

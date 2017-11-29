@@ -26,13 +26,13 @@ function logOut() {
 
 </head>
 
-<body>
+<body background="bookshelf.jpg">
 <button class="logout" onclick="logOut()">logout</button>
 <div class="info">
 </div>
 <div class="booklist">
   <form class="student-welcome">
-    <h2>Search Results</h2>
+    <h2  style="font-size: 300%; color:#FAEAE0;">Search Results</h2>
   </form>
 </div>
 <?php
@@ -63,9 +63,8 @@ function logOut() {
 			var url = "searchResultsServerSubmit.php";
 			$.post(url, data, function(res) {
 				var newUrl = '/~ddallaga/htdocs/studentHomeClient.php';
-				console.log("hello");
 				console.log(res);
-				//window.location.href = newUrl;
+				window.location.href = newUrl;
 			});
 		});
 	</script>

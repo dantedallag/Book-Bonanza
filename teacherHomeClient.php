@@ -57,7 +57,7 @@ window.onload = loadPage;
 </script>
 
 <?php 
-  session_start();
+ session_start();
   if( !isset($_SESSION['credentials']) || $_SESSION['credentials'] == false) {
       header("Location: /~ddallaga/htdocs/");
   }
@@ -90,11 +90,11 @@ function logOut() {
 
 </head>
 
-<body>
+<body background="bookshelf.jpg">
 <button class="logout" onclick="logOut()">logout</button>
-<div class="info">
+<div class="info" style="background-color:rgba(123, 52, 11, 0.8);">
   <form class="student-welcome">
-    <h1 id="teacherHeader">Welcome 'insert teacher name here'!</h1>
+    <h1 id="teacherHeader" style=" font-size: 300%; color:#FAEAE0;">Welcome 'insert teacher name here'!</h1>
   </form>
   <form>
   		<div style="text-align:center">

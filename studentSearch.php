@@ -9,7 +9,7 @@
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<link href="TeacherEditAdd.css" rel="stylesheet">
+<link href="search.css" rel="stylesheet">
 
 <!--
 <script>
@@ -37,10 +37,10 @@ function logOut() {
 </style>
 </head>
 
-<body>
+<body  background="bookshelf.jpg" style="height:600px; width:1000px;">
 <button class="logout" onclick="logOut()">logout</button>
-<div class="container">
-	<h2>Enter your Reading Interests</h2>
+<div class="container" style="height:450px; width:2000px; padding-left:00px; padding-top:45px; padding-bottom:130px; color:#FAEAE0; background-color:rgba(123, 52, 11, 0.8);">
+	<h2 >Enter your Reading Interests</h2>
 	<form>
 		<div class="form-group1" style=bl>
 			<label for "sel1">Author</label>
@@ -64,7 +64,7 @@ function logOut() {
 			<input type="number" min="1" pattern="^[1-9]\d*$" style="width: 200px" class="form-control" id="sel3"/>
 		</div>
 	</form>
-	<form style="padding-left: 50px; width=3000px;">
+	<form style="padding-left: 195px; width=3000px;">
 		<div class="form-group21">
 			<div class="col-xs-3 selectContainer">
 				<label for "sel4">Genre</label>

@@ -9,10 +9,10 @@
 <link href="TeacherEditAdd.css" rel="stylesheet">
 
 <?php 
-  //session_start();
-  //if( !isset($_SESSION['credentials']) || $_SESSION['credentials'] == false) {
-    //  header("Location: /~ddallaga/htdocs/");
-  //}
+  session_start();
+  if( !isset($_SESSION['credentials']) || $_SESSION['credentials'] == false) {
+      header("Location: /~ddallaga/htdocs/");
+  }
 ?>
 <script>
 function logOut() {
@@ -30,9 +30,9 @@ function logOut() {
 </style>
 </head>
 
-<body>
+<body background="bookshelf.jpg">
 <button class="logout" onclick="logOut()">logout</button>
-<div class="container">
+<div class="container" style=" padding-left: 35px; color:#FAEAE0; background-color:rgba(123, 52, 11, 0.8);">
     <h2>Please Enter a New Book</h2> <!--Sanitized, but text box-->
     <form>
         <div class="form-group1">
@@ -70,7 +70,7 @@ function logOut() {
 			<input type="number" min="1" pattern="^[1-9]\d*$" style="width: 200px" class="form-control" id="Length"/>
 		</div>
     </form>
-    <form style="padding-left: 145px; width=3000px;">
+    <form style="padding-left: 150px; width=3000px;">
         <div class="form-group21">
             <div class="col-xs-3 selectContainer">
                 <label for="Popularity">Recommended</label> <!--Popular = >4 recs, Medium = 2-4 recs, Not = 0-1--> 
@@ -104,7 +104,7 @@ function logOut() {
         </div>
     </form>
 
-    <form style="padding-left: 145px">
+    <form style="padding-left: 150px">
         <div class="form-group31">
             <div class="col-xs-3 selectContainer">
                 <label for="Trait1">Protagonist Trait 1</label>

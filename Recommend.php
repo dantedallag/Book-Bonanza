@@ -3,7 +3,11 @@
     $title = $_POST['title'];
     $author = $_POST['author'];
     $name = $_SESSION['name'];
-    include "../credentials.php";
+	$host = "dbserver.engr.scu.edu";
+    $user = "ddallaga";
+    $password = "00001033223";
+    $database = "sdb_ddallaga";
+    $port = 3306;
     $connection = mysqli_connect($host, $user, $password, $database)
         or die("Error: " . mysqli_error($connection));
     if(!$connection) {

@@ -36,10 +36,10 @@ function loadXMLDoc(studentName) {
 </script>
 
 <?php
-session_start();
-if( !isset($_SESSION['credentials']) || $_SESSION['credentials'] == true) {
-        header("Location: /~ddallaga/htdocs/");
-}
+//session_start();
+//if( !isset($_SESSION['credentials']) || $_SESSION['credentials'] == true) {
+ //       header("Location: /~ddallaga/htdocs/");
+//}
 ?>
 
 <script>
@@ -58,18 +58,18 @@ function logOut() {
 </style>
 </head>
 
-<body>
+<body background="bookshelf.jpg">
 <button class="logout" onclick="logOut()">logout</button>
 <div class="info">
   <form class="student-welcome">
-    <h2 id = "studentHeader">Welcome 'insert student name here'!</h2>
+    <h2 id = "studentHeader" style=" font-size: 300%; color:#FAEAE0;">Welcome 'insert student name here'!</h2>
   </form>
 </div>
 <form class="buttons">
   <!--CHANGE THIS BACK TO 'studentSearch.html'-->
   <input type="button" class="btn btn-default" value="Find a New Book" onclick="window.location.href='/~ddallaga/htdocs/studentSearch.php'" />
 </form>
-<div id="table"> </div>
+<div id="table"  style="color:black; background-color:#FAEAE0" align="center"> </div>
 <?php
 require 'studentHomeServer.php';
 ?>
