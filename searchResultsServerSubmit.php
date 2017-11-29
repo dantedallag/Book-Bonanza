@@ -7,8 +7,8 @@
     if(!$connection) {
         echo "Error connecting";
     }
+	//Adds the chosen books to the users account
 	for($i = 0;$i < count($ids);$i++){
-        //Need userID here
         $results = mysqli_query($connection, "SELECT id FROM users WHERE person_name='".$_SESSION['name']."'");
         $row = mysqli_fetch_array($results);
         $var1 = $row[0];

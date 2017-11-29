@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <!--This is the search page for students-->
-<!--TODO: Need to change pre-populated values/draw from MySQL, change Lexile and Length to text entry, filter results if blank-->
 
 <head>
 <!-- Latest compiled and minified CSS -->
@@ -11,16 +10,6 @@
 
 <link href="TeacherEditAdd.css" rel="stylesheet">
 
-<!--
-<script>
-	<!--Script to populate the Combo Boxes
-	function populateCBoxes(){
-		for(i=1;i<7;i++){
-			$('#sel' + i).append('<option>'+ 'Hello'+ '</option>');
-		}
-	}
-</script>
--->
 <script>
 function logOut() {
 	window.location.href = "/~ddallaga/htdocs/";
@@ -45,15 +34,6 @@ function logOut() {
 		<div class="form-group1" style=bl>
 			<label for "sel1">Author</label>
 			<input type="text" onblur="authorFilter()" style="width: 200px" class="form-control" id="sel1"/>
-            <!--<script>
-                function authorFilter() {
-                    var x = document.getElementById("sel1").value;
-                    console.log(x);
-                    var Exp = /^[a-z\s]*$/i;
-                    if(!x.match(Exp))
-                        alert("You must enter an author's name.")
-                }
-            </script>-->
 		</div>
 		<div class="form-group1" style=bl>
 			<label for "sel2">Lexile Level(Required)</label>
@@ -123,11 +103,11 @@ function logOut() {
 			</div>
 		</div>
 	</form>
-		<!--Change href link when the search page is ready -->
         <button type="button" class="btn btn-default" id="submit">Submit Selections</button>
 		<script>
 		$("#submit").click( function() {
             var lex = document.getElementById("sel2").value;
+			//A bit of entry sanitization, this is the only one that matters though
             if($.trim(lex).length == 0){
                 alert("You must enter a Lexile Level.");
                 return;
@@ -143,11 +123,10 @@ function logOut() {
 			var trait1 = $("#sel5 :selected").text();
 			var trait2 = $("#sel6 :selected").text();
 			var data = {"author": author, "lexile": lexile, "length": length, "genre": genre, "trait1": trait1, "trait2": trait2};
-			console.log(data);
 			var url = "studentSearchServer.php";
+			//POST here just adds the variables to SESSION
 			$.post(url,data,function(res) {
 				var newUrl = '/~ddallaga/htdocs/searchResultsClient.php';
-				console.log(res);
 				window.location.href = newUrl;
 			});
 		});

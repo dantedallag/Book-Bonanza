@@ -1,4 +1,5 @@
 <?php
+	//Just logs session variables 
 	session_start();
 	$_SESSION['author'] = $_POST['author'];
 	$_SESSION['lexile'] = $_POST['lexile'];
